@@ -1,0 +1,151 @@
+<!-- Start Hero Section -->
+<div class="hero" style="background: black; color: #FFF;">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-5">
+        <div class="intro-excerpt">
+          <h1>Chi tiết sản phẩm</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Hero Section -->
+<br>
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img [src]="productDetail.image"/></div>
+            <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
+          </div>
+          <ul class="preview-thumbnail nav nav-tabs">
+            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+            <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+            <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+            <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+            <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+          </ul>
+
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title">{{productDetail.name}}</h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+          <p class="product-description">Mô tả: {{productDetail.description}}Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+          <h4 class="price">Giá: <span>{{productDetail.price | currency: 'VND' : 'symbol':'1.0-0' | slice: 1}} đ</span></h4>
+          <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+          <h5 class="sizes">sizes:
+            <span class="size" data-toggle="tooltip" title="small">s</span>
+            <span class="size" data-toggle="tooltip" title="medium">m</span>
+            <span class="size" data-toggle="tooltip" title="large">l</span>
+            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+          </h5>
+          <h5 class="colors">colors:
+            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+            <span class="color green"></span>
+            <span class="color blue"></span>
+          </h5>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity()" class="btn btn-secondary">-</button>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" class="form-control quantity-input" [(ngModel)]="quantity" min="1">
+            <button (click)="increaseQuantity()" class="btn btn-secondary">+</button>
+          </div>
+          <div class="action">
+            <button class="add-to-cart btn btn-default"(click)="addToCartProductDetail(productDetail.id,quantity)">add to cart</button>
+            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-title">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h3 class="product-title">Thông số kĩ thuật</h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-product">
+            <tbody>
+              <tr>
+                <td width="390">Brand</td>
+                <td>Stellar</td>
+              </tr>
+              <tr>
+                <td>Delivery Condition</td>
+                <td>Knock Down</td>
+              </tr>
+              <tr>
+                <td>Seat Lock Included</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>Office Chair</td>
+              </tr>
+              <tr>
+                <td>Style</td>
+                <td>Contemporary&amp;Modern</td>
+              </tr>
+              <tr>
+                <td>Wheels Included</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Upholstery Included</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Upholstery Type</td>
+                <td>Cushion</td>
+              </tr>
+              <tr>
+                <td>Head Support</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Suitable For</td>
+                <td>Study&amp;Home Office</td>
+              </tr>
+              <tr>
+                <td>Adjustable Height</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Model Number</td>
+                <td>F01020701-00HT744A06</td>
+              </tr>
+              <tr>
+                <td>Armrest Included</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Care Instructions</td>
+                <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
+              </tr>
+              <tr>
+                <td>Finish Type</td>
+                <td>Matte</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
