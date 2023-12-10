@@ -40,7 +40,11 @@ export class PaymentComponent {
 
   orderResponse:any;//dữ liệu trả về khi create order
 
-  idPayment:any
+  idPayment:any;
+
+  tongtien:number=0;
+  tongtienhang:number=0;
+  tienship:number=0;
 
   constructor(
     private addressService : AddressService,
@@ -145,7 +149,12 @@ export class PaymentComponent {
       AddressDeliveryId : this.idPayment?this.idPayment:this.addRessChoose[0].id
     }
     this.oderService.createOder(payload.CartDetailID,this.getListPayment[0].id,payload.AddressDeliveryId).subscribe(data =>
-      this.orderResponse=data.data
+      {this.orderResponse=data.data
+        if(data.data){
+          this.tongtienhang=data.data.totalAmount?data.data.totalAmount:0;
+          this.tienship=data.data.amountShip?data.data.amountShip:0;
+          this.tongtien=this.tongtienhang-this.tienship
+        }}
       )
   }
 
@@ -187,6 +196,10 @@ export class PaymentComponent {
     console.log("payload",payload);
     this.addressService.createAddress(payload).subscribe((res)=>{
       alert('Them dia chi thanh cong')
+      this.addressService.getAddress().subscribe((responese : any) =>{
+        this.addRessChoose = [responese.data.listAddress[0]]
+        this.addRess = responese.data.listAddress;
+      })
     })
   }
 

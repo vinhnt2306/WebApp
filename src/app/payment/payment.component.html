@@ -18,116 +18,117 @@
       <div class="col">
         <div class="ibox">
           <!--Địa chỉ mua hàng-->
+
           <div class="card">
             <div class="line"></div>
-            <div class="card-header d-flex align-items-center">
-                <i class="fa-solid fa-location-dot" style="color: #000000;margin-bottom: 10px;margin-right: 10px;"></i>
-                <h4>Địa chỉ mua hàng</h4>
-                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm"
-                    style="color: #4080ee;">Thêm mới địa chỉ</a>
-                  <!-- <h5 class="card-title">Phần 4</h5> -->
-                  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header text-center">
-                          <h3>Địa chỉ của tôi</h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                          <div class="md-form mb-5">
-                            <form (ngSubmit)="onSubmitAddress()">
-                              <!-- 2 column grid layout with text inputs for the first and last names -->
-                              <div class="row">
-                                <div class="col">
-                                  <label class="form-label" for="form6Example1">Tên</label>
-                                  <input type="text" id="form6Example1" class="form-control" />
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div><i class="fa-solid fa-location-dot" style="color: #000000;margin-bottom: 10px;margin-right: 10px;"></i>
+                  <h4>Địa chỉ mua hàng</h4></div>
+                <div><a href="" class="btn btn-default btn-rounded " data-toggle="modal" data-target="#modalLoginForm"
+                  style="color: #4080ee;">Thêm mới địa chỉ</a>
+                <!-- <h5 class="card-title">Phần 4</h5> -->
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header text-center">
+                        <h3>Địa chỉ của tôi</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body modal-lg">
+                        <div class="">
+                          <form (ngSubmit)="onSubmitAddress()">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row">
+                              <div class="col">
+                                <label class="form-label" for="form6Example1">Tên</label>
+                                <input type="text" id="form6Example1" class="form-control" />
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div data-mdb-input-init class="form-group">
+                                  <label class="form-label" for="form6Example2">Số điện thoại</label>
+                                  <input type="text" id="form6Example2" class="form-control" />
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col">
-                                  <div data-mdb-input-init class="form-group">
-                                    <label class="form-label" for="form6Example2">Số điện thoại</label>
-                                    <input type="text" id="form6Example2" class="form-control" />
-                                  </div>
-                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <label class="form-label" for="form6Example1">Địa chỉ</label>
+                                <input type="text" id="form6Example1" class="form-control" />
                               </div>
-                              <div class="row">
-                                <div class="col">
-                                  <label class="form-label" for="form6Example1">Địa chỉ</label>
-                                  <input type="text" id="form6Example1" class="form-control" />
-                                </div>
-                              </div>
+                            </div>
 
-                              <div class="row">
-                                <div class="col">
-                                  <label class="form-label" for="form6Example1">Tỉnh</label>
-                                  <div data-mdb-input-init class="form-group">
-                                    <select [(ngModel)]="selectedProvinceId" name="selectedProvinceId"
-                                      (change)="onProvinceChange()">
-                                      <option *ngFor="let province of provinces" [ngValue]="province">
-                                        {{province.ProvinceName}}
-                                      </option>
-                                    </select>
-                                  </div>
+                            <div class="row">
+                              <div class="col">
+                                <label class="form-label" for="form6Example1">Tỉnh</label>
+                                <div data-mdb-input-init class="form-group">
+                                  <select [(ngModel)]="selectedProvinceId" class="form-control" name="selectedProvinceId"
+                                    (change)="onProvinceChange()">
+                                    <option *ngFor="let province of provinces" [ngValue]="province">
+                                      {{province.ProvinceName}}
+                                    </option>
+                                  </select>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col">
-                                  <label class="form-label" for="form6Example2">Huyện</label>
-                                  <div data-mdb-input-init class="form-group">
-                                    <select *ngIf="districts && districts.length > 0" [(ngModel)]="selectedDistrictsId"
-                                      name="selectedDistricts" (change)="onDistrictsChange()">
-                                      <option *ngFor="let district of districts" [ngValue]="district">
-                                        {{district.DistrictName}}
-                                      </option>
-                                    </select>
-                                  </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <label class="form-label" for="form6Example2">Huyện</label>
+                                <div data-mdb-input-init class="form-group">
+                                  <select *ngIf="districts && districts.length > 0" class="form-control" [(ngModel)]="selectedDistrictsId"
+                                    name="selectedDistricts" (change)="onDistrictsChange()">
+                                    <option *ngFor="let district of districts" [ngValue]="district">
+                                      {{district.DistrictName}}
+                                    </option>
+                                  </select>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col">
-                                  <label class="form-label" for="form6Example2">Xã</label>
-                                  <div data-mdb-input-init class="form-group">
-                                    <select *ngIf="wards && wards.length > 0" name="selectedWard" [(ngModel)]="selectedWardId">
-                                      <option *ngFor="let ward of wards" [ngValue]="ward">
-                                        {{ward.WardName}}
-                                      </option>
-                                    </select>
-                                  </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <label class="form-label" for="form6Example2">Xã</label>
+                                <div data-mdb-input-init class="form-group">
+                                  <select *ngIf="wards && wards.length > 0" name="selectedWard" [(ngModel)]="selectedWardId" class="form-control">
+                                    <option *ngFor="let ward of wards" [ngValue]="ward" >
+                                      {{ward.WardName}}
+                                    </option>
+                                  </select>
                                 </div>
                               </div>
+                            </div>
 
-                              <h4 class="mb-3">Trạng thái địa chỉ</h4>
-                              <div class="d-block my-3">
-                                <div class="custom-control custom-radio">
-                                  <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input"
-                                    required="" value=true [(ngModel)]="isDefaultAddress">
-                                  <label class="custom-control-label" for="httt-1">mặc định</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                  <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input"
-                                    required="" value=false [(ngModel)]="isDefaultAddress">
-                                  <label class="custom-control-label" for="httt-2">thường</label>
-                                </div>
+                            <h4 class="mb-3">Trạng thái địa chỉ</h4>
+                            <div class="d-block my-3">
+                              <div class="custom-control custom-radio">
+                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input"
+                                  required="" value=true [(ngModel)]="isDefaultAddress">
+                                <label class="custom-control-label" for="httt-1">mặc định</label>
                               </div>
-                              <br>
-                              <!-- Submit button -->
-                              <button data-mdb-ripple-init type="button"
-                                class="btn btn-primary btn-block mb-4" type="submit">Lưu</button>
-                              <!--End Submit button -->
-                            </form>
-                          </div>
+                              <div class="custom-control custom-radio">
+                                <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input"
+                                  required="" value=false [(ngModel)]="isDefaultAddress">
+                                <label class="custom-control-label" for="httt-2">thường</label>
+                              </div>
+                            </div>
+                            <br>
+                            <!-- Submit button -->
+                            <button data-mdb-ripple-init type="button"
+                              class="btn btn-primary btn-block mb-4" type="submit">Lưu</button>
+                            <!--End Submit button -->
+                          </form>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm"
-                  style="color: #4080ee;">Chọn địa chỉ</a>
-                  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm"
-                  style="color: #4080ee;">Sửa địa chỉ</a>
+                </div>
+                <a href="" class="btn btn-default btn-rounded " data-toggle="modal" data-target="#modalLoginForm"
+                style="color: #4080ee;">Chọn địa chỉ</a>
+                <a href="" class="btn btn-default btn-rounded " data-toggle="modal" data-target="#modalLoginForm"
+                style="color: #4080ee;">Sửa địa chỉ</a></div>
             </div>
             <div class="card-body" style="padding: 10px;">
               <div class="row"  *ngIf="addRessChoose && addRessChoose.length > 0">
@@ -258,15 +259,15 @@
               <h4>Chi tiết thanh toán</h4>
               <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
                 <div>Tổng tiền hàng:</div>
-                <div>{{orderResponse&&orderResponse.totalAmount?orderResponse.totalAmount:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                <div>{{tongtienhang | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
               </div>
               <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
                 <div>Phí vận chuyển:</div>
-                <div>{{orderResponse&&orderResponse.amountShip?orderResponse.amountShip:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                <div>{{tienship | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
               </div>
               <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
                 <div>Tổng:</div>
-                <div>{{orderResponse&&orderResponse.totalAmount?orderResponse.totalAmount:0 * orderResponse&&orderResponse.amountShip?orderResponse.amountShip:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                <div>{{tongtien| currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
               </div>
             </div>
           </div>

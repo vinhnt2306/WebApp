@@ -129,12 +129,6 @@
 <hr>
 <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
 <div class="container mt-4">
-  <div id="thongbao" class="alert alert-danger d-none face" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-      </button>
-  </div>
-
   <h1 class="text-center">Giỏ hàng</h1>
   <div class="row">
       <div class="col col-md-12">
@@ -166,9 +160,10 @@
                       <td class="text-right">{{cart.quantity*cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</td>
                       <td>
                           <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                          <a id="delete_1" data-sp-ma="2" class="btn btn-danger btn-delete-sanpham">
-                              <i class="fa fa-trash" aria-hidden="true"></i> Xóa
-                          </a>
+                          <button class="btn btn-primary" type="button" [disabled]="status" (click)="hanldeRemoveCartItem(cart)">
+                            <span class="spinner-border spinner-border-sm" (ngModel)="status" *ngIf="status" role="status"  aria-hidden="true"></span>
+                            Xóa
+                          </button>
                       </td>
                   </tr>
               </tbody>
@@ -177,8 +172,8 @@
           <a routerLink="/home-page" class="btn btn-warning btn-md"><i class="fa fa-arrow-left"
                   aria-hidden="true"></i>&nbsp;Quay
               về trang chủ</a>
-          <a routerLink="/payment" class="btn btn-primary btn-md"><i
-                  class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Thanh toán</a>
+                  <button routerLink="/payment" class="btn btn-primary btn-md"   [disabled]="isDisabled"><i
+                    class="fa fa-shopping-cart" aria-hidden="true"></i>Thanh toans </button>
       </div>
   </div>
 </div>

@@ -55,4 +55,11 @@ export class CartService {
     console.log(body)
     return this.httpClient.post(`${this.baseURL}/api/EditCartItem/Process`, body);
   }
+  deleteCartItem(id:string): Observable<any> {
+    const body = {
+      id:id,
+      token: JSON.parse(localStorage.getItem('currentUser') ?? '').data.token,
+    };
+    return this.httpClient.post(`${this.baseURL}/api/DeleteCartItem/Process`, body);
+  }
 }
