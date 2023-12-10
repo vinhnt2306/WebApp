@@ -130,22 +130,50 @@
                   style="color: #4080ee;">Sửa địa chỉ</a>
             </div>
             <div class="card-body" style="padding: 10px;">
-              <div class="row" *ngFor="let ad of addRess">
+              <div class="row"  *ngIf="addRessChoose && addRessChoose.length > 0">
                 <div class="col-md-2">
                   <!-- <h5 class="card-title">Tên + Sdt</h5> -->
                   <p class="card-text">+840971770508</p>
                 </div>
                 <div class="col-md-6">
                   <!-- <h5 class="card-title">Địa chỉ</h5> -->
-                  <p class="card-text">address</p>
+                  <p class="card-text">{{addRessChoose[0].address}}</p>
                 </div>
-                <div class="col-md-2">
-                  <!-- <h5 class="card-title">Status</h5> -->
-                  <p class="card-text">stt</p>
-                </div>
+
                 <div class="col-md-2">
                   <a href="" class="btn btn-default btn-rounded mb-4"
                     style="color: #4080ee;">Sửa địa chỉ</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalChangeAddress"
+                    style="color: #4080ee;">Đổi địa chỉ</a>
+                    <div class="modal fade" id="modalChangeAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header text-center">
+                          <h3>Danh sách địa chỉ</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body mx-5">
+                          <div class="md-form mb-2">
+                           <div *ngFor="let ad of addRess" class="row">
+                            <div class="col-md-8">
+                              <!-- <h5 class="card-title">Địa chỉ</h5> -->
+                              <p class="card-text">{{ad.address}}</p>
+                            </div>
+                            <div class="col-md-4">
+                              <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                              <button  (click)="onChooseAdress(ad)"  class="close" data-dismiss="modal" >Chọn</button>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,7 +203,7 @@
                     <td class="text">
                       {{cart.quantity}}
                     </td>
-                    <td class="text">{{cart.price| currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</td>
+                    <td class="text">{{cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</td>
                     <td class="text">{{cart.quantity*cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
                     </td>
                   </tr>
@@ -226,8 +254,20 @@
           <br>
           <!--Phí vận chuyển-->
           <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <h4>Phí vận chuyển</h4>
+            <div class="card-header ">
+              <h4>Chi tiết thanh toán</h4>
+              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                <div>Tổng tiền hàng:</div>
+                <div>{{orderResponse&&orderResponse.totalAmount?orderResponse.totalAmount:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                <div>Phí vận chuyển:</div>
+                <div>{{orderResponse&&orderResponse.amountShip?orderResponse.amountShip:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                <div>Tổng:</div>
+                <div>{{orderResponse&&orderResponse.totalAmount?orderResponse.totalAmount:0 * orderResponse&&orderResponse.amountShip?orderResponse.amountShip:0 | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+              </div>
             </div>
           </div>
           <!--End Phí vận chuyển-->
@@ -236,24 +276,26 @@
           <h4 class="mb-3">Hình thức thanh toán</h4>
           <div action="">
             <div class="form-check" *ngFor="let payment of getListPayment">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="payment.id"
+              [(ngModel)]="idPayment">
+              <label class="form-check-label" for="flexRadioDefault1" >
                 {{payment.name}}
               </label>
             </div>
-            <div class="form-check">
+            <!-- <div class="form-check">
               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
               <label class="form-check-label" for="flexRadioDefault2">
-                Chuyển khoản
+                {{payment.name}}
+
               </label>
-            </div>
+            </div> -->
           </div>
           <!--End Phương thức thanh toán-->
 
           <br>
           <hr>
           <div class="ibox-content" style="padding: 0px;">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang" (click)="ConfirmOder()">Đặt
+            <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang" (click)="onConfirmOrder()">Đặt
               hàng</button>
           </div>
         </div>

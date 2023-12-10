@@ -22,4 +22,19 @@ export class OderService {
     return this.httpClient.post(`${this.baseURL}/api/CreateOrder/Process`, body)
     // return this.httpClient.post(`${this.baseURL}/api/AddToCart/Process`, body);
   }
+  confirmorder(payload:any) : Observable<any> {
+    const body = {
+      token : JSON.parse(localStorage.getItem('currentUser')??"").data.token,
+      description:"không comment",
+    cartDetailId:payload.cartDetailId,
+    totalAmountDiscount: payload.totalAmountDiscount,
+    amountShip: payload.amountShip,
+    totalAmount: payload.totalAmount,
+    addressDelivery: payload.addressDelivery,
+    paymentMethodId: payload.paymentMethodId,
+    voucherID: null,
+    };
+    return this.httpClient.post(`${this.baseURL}/api/ConfirmOrder/Process`, body)
+    // return this.httpClient.post(`${this.baseURL}/api/AddToCart/Process`, body);
+  }
 }

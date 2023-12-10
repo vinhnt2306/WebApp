@@ -22,6 +22,8 @@ export class PaymentComponent {
 
   addRess : any[] = [];//Địa chỉ khách hàng
 
+  addRessChoose : any[] = [];//Địa chỉ khách hàng
+
   cartProductsByPayment : any[] = [];//sản phẩm trong giỏ hàng CartItem
 
   selectedProvinceId : any; // Lưu ID của tỉnh đã chọn
@@ -36,6 +38,9 @@ export class PaymentComponent {
 
   isDefaultAddress:any;//check trạng thái của địa chỉ
 
+  orderResponse:any;//dữ liệu trả về khi create order
+
+  idPayment:any
 
   constructor(
     private addressService : AddressService,
@@ -47,14 +52,20 @@ export class PaymentComponent {
 
   ngOnInit(): void {
     //get ra địa chỉ khách hàng
+    var addChooes:any=[]
+    var lstCart:any=[]
     this.addressService.getAddress().subscribe((responese : any) =>{
-      this.addRess = responese.data.listAddress
+      this.addRessChoose = [responese.data.listAddress[0]]
+      this.addRess = responese.data.listAddress;
+      addChooes=[responese.data.listAddress]
+      console.log(addChooes)
     })
     //get ra thành phố
     this.getProvinces();
     //get ra sản phẩm trong giỏ hàng CartItem
     this.cartService.getCartItem().subscribe((response: any) => {
       this.cartProductsByPayment = response.data.cartItem
+      lstCart = response.data.cartItem
       //Tính số lượng * đơn giá
       this.sum = response.data.cartItem.reduce((next:any,prev:any)=>{return (next+prev.price*prev.quantity)},0)
     })
@@ -66,7 +77,19 @@ export class PaymentComponent {
     this.vouncherService.getListVouncher().subscribe((response : any) =>{
       this.getListVouncher = response.data.lstVoucher
     });
+    console.log(addChooes)
 
+    setTimeout(()=>{
+      if(addChooes.length>0 && lstCart.length>0){
+        this.ConfirmOder();
+      }
+    },5000)
+
+  }
+
+  onChooseAdress(address:any):void{
+    this.addRessChoose=[address]
+    this.ConfirmOder()
   }
 
   getProvinces(): void {
@@ -89,7 +112,6 @@ export class PaymentComponent {
     // this.getDistrictsByProvinceId(parseInt("267"));
     this.getWardByDistrictsId(parseInt(this.selectedDistrictsId.DistrictID));
   }
-
   getDistrictsByProvinceId(provinceId : number) : void{
     this.addressService.getListDistrictByProvinceId(provinceId).subscribe(
       (data : any) => {
@@ -117,13 +139,39 @@ export class PaymentComponent {
     let cartId = this.cartProductsByPayment.map((response : any) =>
         response.cartDetailID
     )
-
     let payload = {
       CartDetailID :cartId,
       PaymentMenthodID : this.getListPayment[0].id,
-      AddressDeliveryId : this.addRess[0].id
+      AddressDeliveryId : this.idPayment?this.idPayment:this.addRessChoose[0].id
     }
-    this.oderService.createOder(payload.CartDetailID,this.getListPayment[0].id,this.addRess[2].id).subscribe(data =>this.cartProductsByPayment=[])
+    this.oderService.createOder(payload.CartDetailID,this.getListPayment[0].id,payload.AddressDeliveryId).subscribe(data =>
+      this.orderResponse=data.data
+      )
+  }
+
+  onConfirmOrder(){
+    if(this.addRessChoose.length==0){
+      alert("Vui lòng thêm mới đại chỉ")
+      return;
+    }
+    let cartId = this.cartProductsByPayment.map((response : any) =>
+    response.cartDetailID
+)
+    let payload= {
+      token : JSON.parse(localStorage.getItem('currentUser')??"").data.token,
+      description:"không comment",
+      cartDetailId:cartId,
+      totalAmountDiscount: 0,
+      amountShip: this.orderResponse.amountShip,
+      totalAmount: this.orderResponse.totalAmount,
+      addressDelivery: this.addRessChoose[0].id,
+      paymentMethodId: this.idPayment?this.idPayment:this.addRessChoose[0].id,
+      voucherID: null,
+    };
+    this.oderService.confirmorder(payload).subscribe((res)=>{
+      this.cartProductsByPayment=[]
+      alert('Thanh toán thành công')
+    })
   }
 
   onSubmitAddress(){
