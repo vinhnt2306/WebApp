@@ -34,6 +34,6 @@ export class ProductComponent {
   addToCartProduct(productId : string , quantity : number) {
     this.cartService.addToCart(productId,quantity).subscribe(data => console.log(data))
     console.log(productId,quantity)
-    // alert('thêm sản phẩm vào giỏ hàng thành công')
+    alert('thêm sản phẩm vào giỏ hàng thành công')
   }
 }

@@ -153,7 +153,7 @@ export class PaymentComponent {
         if(data.data){
           this.tongtienhang=data.data.totalAmount?data.data.totalAmount:0;
           this.tienship=data.data.amountShip?data.data.amountShip:0;
-          this.tongtien=this.tongtienhang-this.tienship
+          this.tongtien=this.tongtienhang+this.tienship
         }}
       )
   }
