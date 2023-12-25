@@ -6,7 +6,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
-import { Payment2Component } from './payment2/payment2.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
@@ -21,7 +20,6 @@ const routes: Routes =  [
   { path: 'home-page', component: HomepageComponent},
   { path: 'cart', component: CartComponent},
   { path: 'payment', component: PaymentComponent},
-  { path: 'payment2', component: Payment2Component},
   {
     path: 'profile',
     component: ProfileComponent,

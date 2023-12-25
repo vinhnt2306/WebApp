@@ -22,7 +22,7 @@ export class OderService {
     return this.httpClient.post(`${this.baseURL}/api/CreateOrder/Process`, body)
     // return this.httpClient.post(`${this.baseURL}/api/AddToCart/Process`, body);
   }
-  confirmorder(payload:any) : Observable<any> {
+  confirmOrder(payload:any) : Observable<any> {
     const body = {
       token : JSON.parse(localStorage.getItem('currentUser')??"").data.token,
       description:"không comment",

@@ -40,6 +40,8 @@ export class PaymentComponent {
 
   orderResponse:any;//dữ liệu trả về khi create order
 
+  confirmResponse:any[] = [];//dữ liệu trả về khi confirm oder
+
   idPayment:any;
 
   tongtien:number=0;
@@ -177,9 +179,12 @@ export class PaymentComponent {
       paymentMethodId: this.idPayment?this.idPayment:this.addRessChoose[0].id,
       voucherID: null,
     };
-    this.oderService.confirmorder(payload).subscribe((res)=>{
+    this.oderService.confirmOrder(payload).subscribe((res)=>{
       this.cartProductsByPayment=[]
-      alert('Thanh toán thành công')
+      this.confirmResponse = res.data
+      console.log(this.confirmResponse)
+      alert("Đặt hàng thành công")
+
     })
   }
 

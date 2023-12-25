@@ -16,7 +16,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
-import { Payment2Component } from './payment2/payment2.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
@@ -35,7 +34,6 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     RegisterComponent,
     CartComponent,
     PaymentComponent,
-    Payment2Component,
     ProductDetailComponent,
     ProfileComponent,
     PurchaseOrderComponent,

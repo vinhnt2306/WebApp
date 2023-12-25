@@ -1,0 +1,16 @@
+.box{
+  height: 400px;
+  width: 350px;
+}
+.detail-box{
+  text-transform: capitalize;
+}
+.detail-box h5{
+  margin: 0 auto;
+}
+
+.detail-price{
+  margin-top: 30px;
+  text-align: center;
+  color: red;
+}
