@@ -1,27 +1,13 @@
-# WebApp
+Các bước cài đặt Web App
+--Chúng ta git clone Web App về(Lưu vào destop hoặc bất kỳ đâu nhưng phải thật chú trọng thư mục mình clone về)
+--Chúng ta phải có Node Js và Angular để chạy Web App
+B1: Cài Node Js bằng lệnh: npm install -g npm (kiểm tra xem version mới nhất bằng: node -v )
+B2: Cài đặt Angular bằng lệnh: npm i @angular/cli (kiểm tra version mới nhất bằng: ng v hoặc ng version )
+B3: Sau khi cài đặt xong 2 bước trên chúng ta chạy teminal cạnh nút run bên trên góc trái màn hình 
+Terminal -> New Terminal
+Lưu Ý: Để ý ổ mình lưu thư mục Web App ở đâu để chạy Terminal cho đúng 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+--Cách số 2 có thể sử dụng npm i hoặc npm install để cài đặt các gói thư viện đã có sẵn trong Web App và
+thực hiện bước 3 ở trên.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+--Còn về phía source Back-End thì tự mọi người clone về chạy kèm database
