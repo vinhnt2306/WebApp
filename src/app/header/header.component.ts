@@ -9,6 +9,7 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class HeaderComponent {
   userName: string | undefined;
+  userData: any;
   isLoggedIn = false;
   constructor(private router: Router,
     private authService: AuthenticationService
@@ -30,6 +31,8 @@ export class HeaderComponent {
         this.userName = currentUser.data.userName;
         // Thực hiện các xử lý với dữ liệu người dùng
       }
+
+      this.userData = JSON.parse(localStorage.getItem('currentUser')!);
   }
 
   logout(): void {
