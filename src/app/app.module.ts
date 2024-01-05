@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order.-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +40,15 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     ProductDetailComponent,
     ProfileComponent,
     PurchaseOrderComponent,
-    ProfileUserComponent
+    ProfileUserComponent,
+    PurchaseOrderDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NzTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

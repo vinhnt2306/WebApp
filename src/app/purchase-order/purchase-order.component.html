@@ -1,1 +1,43 @@
-<p>purchase-order works!</p>
+<div>
+    <nz-tabset>
+        <nz-tab nzTitle="Tất cả">
+            <div *ngFor="let order of lstOrder; let i=index;">
+                <div class="WrapperOrder">
+                    <div *ngFor="let shoes of order.products; let i = index">
+                        <div class="line">
+                            <img src="ok" alt="">
+                            <div style="flex: 1;">
+                                <div class="name">{{shoes?.productName}}</div>
+                                <!-- <div class="name">"ok""</div> -->
+                                <div class="wp">
+                                    <div className="price">
+                                        {{shoes?.price}}
+                                    </div>
+                                    <div>
+                                        {{shoes?.quantity}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wp">
+                        <div>Phí ship</div>
+                        <div>{{order.amountShip}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>{{order.products.length}} sản phẩm</div>
+                        <div>Thành tiền: {{order.totalAmount}}</div>
+                    </div>
+                    <div class="wp">
+                        <div></div>
+                        <div class="detail">Xem chi tiết</div>
+                    </div>
+                </div>
+            </div>
+
+        </nz-tab>
+        <nz-tab nzTitle="Chờ duyệt">Content of Tab Pane 2</nz-tab>
+        <nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+    </nz-tabset>
+</div>
