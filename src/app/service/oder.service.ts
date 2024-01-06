@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -46,6 +46,20 @@ export class OderService {
       body: body,
       observe: 'body',
       responseType: 'json'
+    })
+  }
+  getOrderDetail(id: string): Observable<any> {
+    const body = {
+      token: JSON.parse(localStorage.getItem('currentUser') ?? "").data.token
+    };
+    return this.httpClient.request('GET', `${this.baseURL}/api/Order/getOrdersByItemId?uId=${id}`, {
+      body: body,
+      observe: 'body',
+      responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') ?? "").data.token}`
+      }),
     })
   }
 }

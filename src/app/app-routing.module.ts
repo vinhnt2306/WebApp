@@ -13,7 +13,7 @@ import { PurchaseOrderComponent } from './purchase-order/purchase-order.componen
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { TabAll } from './tabs_purchase-order/_tab_all/tab_all';
 import { Tab2 } from './tabs_purchase-order/_tab2/tab2';
-import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order.-detail.component';
+import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order-detail.component';
 const routes: Routes = [
 
   { path: 'purchase-order', component: PurchaseOrderComponent },
@@ -33,10 +33,11 @@ const routes: Routes = [
       {
         path: 'purchase-order', component: PurchaseOrderComponent,
         children: [
-          { path: 'purchase-order-detail', component: PurchaseOrderDetailComponent },
+
           { path: 'tab2', component: Tab2 },
         ]
-      } // Thêm các route con cho 'profile' nếu cần
+      } // Thêm các route con cho 'profile' nếu cần,
+      , { path: 'purchase-order-detail', component: PurchaseOrderDetailComponent },
     ]
   },
   { path: '**', redirectTo: 'home-page' }

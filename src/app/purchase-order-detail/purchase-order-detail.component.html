@@ -1,1 +1,81 @@
-<div>dsad</div>
+<div class="BoxInfoUser">
+    <div class="info">Thông tin đơn hàng</div>
+    <div>Đơn hàng đang đợi người bán duyệt</div>
+    <br />
+    <br />
+    <button>Hủy đơn hàng</button>
+    <br />
+    <br />
+    <hr />
+    <div class="row" style="margin-bottom: 15px;">
+        <div class="col-8">
+            <div style="
+        margin-left: 12px;
+        margin-top: 12px;
+        line-height: 26px;
+      ">
+                <div style="font-size: 20px; font-weight: 600;">Địa chỉ nhận hàng</div>
+                <p style="font-weight: 600; margin-top: 20px;">Hoang Chung</p>
+                <p>Số điện thoại: 099009999</p>
+                <p>Địaa chỉ sd sa d dsa dá d asd á dá d sdasd á ds</p>
+            </div>
+        </div>
+        <div class="col-15">
+            <div style="margin-top: 20px;">
+                <ul class="timeline">
+                    <li>
+                        <div [ngClass]="{ 'timeline-item': true, 'first-item': 0 === 0 }">
+                            <div class="timeline-content">
+                                <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                ">
+                                    <div>
+                                        <!-- {{ x.tenKhachHang }} {{ x.message }} -->
+                                        ok
+                                    </div>
+                                    <div>
+                                        <!-- {{ x.logTime | date: 'dd/MM/yyyy H:mm' }} -->
+                                        ọk
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div *ngFor="let order of orderDetail.products; let i=index;">
+        <div class="WrapperOrder">
+            <div class="line">
+                <img src="ok" alt="">
+                <div style="flex: 1;">
+                    <div class="name">{{order?.productName}}đas</div>
+                    <!-- <div class="name">"ok""</div> -->
+                    <div class="wp">
+                        <div className="price">
+                            {{order?.price}}
+                        </div>
+                        <div>
+                            {{order?.quantity}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div className="wp" style="display: flex;justify-content: space-between;"
+        *ngIf="orderDetail && orderDetail.products.length > 0">
+        <div> {{orderDetail.products.length}} sản phẩm</div>
+        <div>
+            <div>Thành tiền</div>
+            <div style=" margin-left: 100px;">
+                {{sum}}
+            </div>
+        </div>
+    </div>
+</div>

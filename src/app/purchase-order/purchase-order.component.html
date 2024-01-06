@@ -31,7 +31,8 @@
                     </div>
                     <div class="wp">
                         <div></div>
-                        <div class="detail">Xem chi tiết</div>
+                        <div class="detail" [routerLink]="['/profile/purchase-order-detail/']"
+                            [queryParams]="{orderId: order.id}">Xem chi tiết</div>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
-import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order.-detail.component';
+import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order-detail.component';
 
 @NgModule({
   declarations: [
