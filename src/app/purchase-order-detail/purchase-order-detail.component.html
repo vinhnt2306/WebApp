@@ -22,15 +22,17 @@
     <hr />
     <div class="row" style="margin-bottom: 15px;">
         <div class="col-8">
-            <div style="
+            <div *ngIf="orderDetail &&orderDetail.nameUser">
+                <div style="
         margin-left: 12px;
         margin-top: 12px;
         line-height: 26px;
       ">
-                <div style="font-size: 20px; font-weight: 600;">Địa chỉ nhận hàng</div>
-                <p style="font-weight: 600; margin-top: 20px;">Hoang Chung</p>
-                <p>Số điện thoại: 099009999</p>
-                <p>Địaa chỉ sd sa d dsa dá d asd á dá d sdasd á ds</p>
+                    <div style="font-size: 20px; font-weight: 600;">Địa chỉ nhận hàng</div>
+                    <p style="font-weight: 600; margin-top: 20px;">{{orderDetail.nameUser}}</p>
+                    <p>Số điện thoại: {{orderDetail.phoneNumber}}</p>
+                    <p>{{orderDetail.address}}</p>
+                </div>
             </div>
         </div>
         <div class="col-15">
