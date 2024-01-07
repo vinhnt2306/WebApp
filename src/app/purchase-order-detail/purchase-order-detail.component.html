@@ -9,8 +9,8 @@
           Hủy đơn hàng
         </button>
     </div>
-    <div *ngIf="orderDetail && orderDetail.status == 4" class="black">
-        <button (click)="handleUpdateTrangThai(5)">
+    <div *ngIf="orderDetail && orderDetail.status == 4">
+        <button (click)="handleUpdateTrangThai(5)" class="black">
             Đã nhận được hàng
           </button>
         <button (click)="handleUpdateTrangThai(7)" class="black">
