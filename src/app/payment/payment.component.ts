@@ -179,7 +179,7 @@ export class PaymentComponent {
       paymentMethodId: this.idPayment?this.idPayment:this.addRessChoose[0].id,
       voucherID: null,
     };
-    this.oderService.confirmorder(payload).subscribe((res)=>{
+    this.oderService.confirmOrder(payload).subscribe((res)=>{
       this.cartProductsByPayment=[]
       this.confirmResponse = res.data
       console.log(this.confirmResponse)

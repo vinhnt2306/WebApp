@@ -5,7 +5,7 @@
                 <div class="WrapperOrder">
                     <div *ngFor="let shoes of order.products; let i = index">
                         <div class="line">
-                            <img src="ok" alt="">
+                            <img src={{shoes?.url}} alt="">
                             <div style="flex: 1;">
                                 <div class="name">{{shoes?.productName}}</div>
                                 <!-- <div class="name">"ok""</div> -->
@@ -31,7 +31,7 @@
                     </div>
                     <div class="wp">
                         <div></div>
-                        <div class="detail" routerLink="purchase-order-detail">Xem chi tiết</div>
+                        <div class="detail" [routerLink]="['/profile/purchase-order-detail/']" [queryParams]="{orderId: order.id}">Xem chi tiết</div>
                     </div>
                 </div>
             </div>

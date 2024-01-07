@@ -44,8 +44,8 @@ export class ProductDetailComponent {
   increaseQuantity() {
     this.quantity++;
   }
-  addToCartProductDetail(productId : string , quantity : number) {
-    this.cartService.addToCart(productId,quantity).subscribe(data => console.log(data))
+  addToCartProductDetail(productId : string , quantity : number,LoginType:boolean) {
+    this.cartService.addToCart(productId,quantity,LoginType).subscribe(data => console.log(data))
     console.log(productId,quantity)
     alert('thêm sản phẩm thành công')
   }

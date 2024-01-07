@@ -14,7 +14,6 @@ import { TabAll } from './tabs_purchase-order/_tab_all/tab_all';
 import { Tab2 } from './tabs_purchase-order/_tab2/tab2';
 import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order-detail.component';
 const routes: Routes = [
-
   { path: 'purchase-order', component: PurchaseOrderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -23,7 +22,6 @@ const routes: Routes = [
   { path: 'home-page', component: HomepageComponent },
   { path: 'cart', component: CartComponent },
   { path: 'payment', component: PaymentComponent },
-  // { path: 'payment2', component: Payment2Component },
   {
     path: 'profile',
     component: ProfileComponent,
@@ -31,19 +29,20 @@ const routes: Routes = [
       { path: 'profile-user', component: ProfileUserComponent },
       
       {
-        path: 'purchase-order', component: PurchaseOrderComponent,
-        children: [
-          { path: 'purchase-order-detail', component: PurchaseOrderDetailComponent },
-          { path: 'tab2', component: Tab2 },
-        ]
-      } // Thêm các route con cho 'profile' nếu cần
-    ]
+        path: 'purchase-order',
+        component: PurchaseOrderComponent,
+        children: [{ path: 'tab2', component: Tab2 }],
+      }, // Thêm các route con cho 'profile' nếu cần,
+      {
+        path: 'purchase-order-detail',
+        component: PurchaseOrderDetailComponent,
+      },
+    ],
   },
-  { path: '**', redirectTo: 'home-page' }
-
+  { path: '**', redirectTo: 'home-page' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
