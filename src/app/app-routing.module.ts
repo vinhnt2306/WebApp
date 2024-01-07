@@ -10,29 +10,38 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
-const routes: Routes =  [
-
+import { TabAll } from './tabs_purchase-order/_tab_all/tab_all';
+import { Tab2 } from './tabs_purchase-order/_tab2/tab2';
+import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-order-detail.component';
+const routes: Routes = [
   { path: 'purchase-order', component: PurchaseOrderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'product', component: ProductComponent },
   { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'home-page', component: HomepageComponent},
-  { path: 'cart', component: CartComponent},
-  { path: 'payment', component: PaymentComponent},
+  { path: 'home-page', component: HomepageComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'payment', component: PaymentComponent },
   {
     path: 'profile',
     component: ProfileComponent,
     children: [
       { path: 'profile-user', component: ProfileUserComponent },
-      { path: 'purchase-order', component: PurchaseOrderComponent } // Thêm các route con cho 'profile' nếu cần
-    ]
+      {
+        path: 'purchase-order',
+        component: PurchaseOrderComponent,
+        children: [{ path: 'tab2', component: Tab2 }],
+      }, // Thêm các route con cho 'profile' nếu cần,
+      {
+        path: 'purchase-order-detail',
+        component: PurchaseOrderDetailComponent,
+      },
+    ],
   },
-  { path: '**', redirectTo: 'home-page'}
-
+  { path: '**', redirectTo: 'home-page' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
