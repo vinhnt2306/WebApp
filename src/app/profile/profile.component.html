@@ -11,23 +11,26 @@
 </div>
 <div class="container">
   <div class="view-account">
-      <section class="module">
-          <div class="module-inner">
-              <div class="side-bar">
-                  <div class="user-info">
-                      <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                  </div>
-              <nav class="side-menu">
-              <ul class="nav">
-                <li class="active"><a [routerLink]="['/profile/profile-user']"><span class="fa fa-user"></span>Thông tin</a></li>
-                <li><a [routerLink]="['/profile/purchase-order']"><span class="fa fa-cog"></span> Đơn mua</a></li>
-              </ul>
-            </nav>
-              </div>
-              <div class="content-panel">
-                  <router-outlet></router-outlet>
-              </div>
+    <section class="module">
+      <div class="module-inner">
+        <div class="side-bar">
+          <div class="user-info">
+            <img class="img-profile img-circle img-responsive center-block"
+              src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
           </div>
-      </section>
+          <nav class="side-menu">
+            <ul class="nav">
+              <li [class.active]="isActive('/profile/profile-user')"><a [routerLink]="['/profile/profile-user']"><span
+                    class="fa fa-user"></span>Thông tin</a></li>
+              <li [class.active]="isActive('/profile/purchase-order')"><a
+                  [routerLink]="['/profile/purchase-order']"><span class="fa fa-cog"></span> Đơn mua</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="content-panel">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
