@@ -44,8 +44,8 @@ export class PaymentComponent {
 
   idPayment: any;
 
-  nameUSer: any;
-  phoneNumber: any;
+  receiverName: any;
+  receiverPhone: any;
 
   tongtien: number = 0;
   tongtienhang: number = 0;
@@ -203,9 +203,11 @@ export class PaymentComponent {
   }
 
   onSubmitAddress() {
-    console.log(this.nameUSer);
-    return;
+    console.log(this.receiverName);
+
     let payload = {
+      receiverName:this.receiverName,
+      receiverPhone:this.receiverPhone,
       provinceName: this.selectedProvinceId.ProvinceName,
       provinceId: this.selectedProvinceId.ProvinceID,
       districName: this.selectedDistrictsId.DistrictName,
