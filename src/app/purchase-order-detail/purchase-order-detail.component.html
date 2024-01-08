@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-15">
+        <!-- <div class="col-15">
             <div style="margin-top: 20px;">
                 <ul class="timeline">
                     <li>
@@ -47,12 +47,12 @@
                   justify-content: space-between;
                 ">
                                     <div>
-                                        <!-- {{ x.tenKhachHang }} {{ x.message }} -->
-                                        ok
+                                        
+                                        Khach Hàng
                                     </div>
                                     <div>
-                                        <!-- {{ x.logTime | date: 'dd/MM/yyyy H:mm' }} -->
-                                        ọk
+                                        
+                                        TimeLine
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div *ngFor="let order of orderDetail.products; let i=index;">
@@ -68,27 +68,31 @@
             <div class="line">
                 <img src="ok" alt="">
                 <div style="flex: 1;">
-                    <div class="name">{{order?.productName}}đas</div>
+                    <div class="name">Tên sản phẩm: {{order?.productName}}</div>
+                    <div className="price">
+                        Giá: {{order?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                     </div>
+                     <div className="price">
+                        Số Lượng : {{order?.quantity}}
+                     </div>
+                     <div className="price">
+                         Tiền ship: {{orderDetail.amountShip}}đ
+                      </div>
                     <!-- <div class="name">"ok""</div> -->
                     <div class="wp">
-                        <div className="price">
-                            {{order?.price}}
-                        </div>
-                        <div>
-                            {{order?.quantity}}
-                        </div>
+                        
+                        
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <div className="wp" style="display: flex;justify-content: space-between;" *ngIf="orderDetail && orderDetail.products.length > 0">
-        <div> {{orderDetail.products.length}} sản phẩm</div>
+        <div> Tổng sản phẩm: {{orderDetail.products.length}}</div>
         <div>
-            <div>Thành tiền</div>
+            <div>Thành tiền: {{orderDetail.amountShip + orderDetail.products[0].price| currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
             <div style=" margin-left: 100px;">
-                {{sum}}
+                
             </div>
         </div>
     </div>

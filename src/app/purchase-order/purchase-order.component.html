@@ -3,41 +3,48 @@
         <nz-tab nzTitle="Tất cả">
             <div *ngFor="let order of lstOrder; let i=index;">
                 <div class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                    <h1>Đơn hàng đã đặt</h1>
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
-                        <div class="detail" [routerLink]="['/profile/purchase-order-detail/']" [queryParams]="{orderId: order.id}">Xem chi tiết</div>
+                        <div class="detail" [routerLink]="['/profile/purchase-order-detail/']"
+                            [queryParams]="{orderId: order.id}">Xem chi tiết</div>
                     </div>
                 </div>
             </div>
 
         </nz-tab>
         <nz-tab nzTitle="Chờ duyệt">Content of Tab Pane 2</nz-tab>
-        <nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+        <nz-tab nzTitle="Đã hoàn thành">Content of Tab Pane 3</nz-tab>
     </nz-tabset>
 </div>

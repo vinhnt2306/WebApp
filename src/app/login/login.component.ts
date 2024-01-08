@@ -27,8 +27,8 @@ export class LoginComponent {
         localStorage.setItem('currentUser', JSON.stringify(data));
         // Điều hướng người dùng sau khi đăng nhập thành công
         this.isLoggedIn=true;
+        window.location.reload();
         alert('Đăng nhập thành công !')
-        this.route.navigate(['home-page'])
       }
       },
       error => {
@@ -37,6 +37,6 @@ export class LoginComponent {
         // this.header.isLoggedIn=false;
       }
     );
-
+    this.route.navigate(['/home-page'])
   }
 }

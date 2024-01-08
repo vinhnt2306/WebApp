@@ -11,24 +11,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" routerLink="/home-page">Trang chủ<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="testimonial.html">Testimonial</a></li>
-                        </ul>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/product">Sản phẩm</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/category">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/product">Products</a>
+                        <a class="nav-link" routerLink="/profile">Tin Tức</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/profile">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/payment2">2</a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/login" *ngIf="!isLoggedIn">Đăng nhập</a>
                     </li>
@@ -102,7 +93,7 @@
                 </g>
               </svg>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                99+
+                {{totalQuantity}}+
               </span>
                         </a>
                     </li>
