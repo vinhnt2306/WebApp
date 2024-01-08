@@ -15,7 +15,7 @@ export class PurchaseOrderDetailComponent {
     private router: Router,
     public orderServices: OderService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   idparams = 0;
   orderDetail: any;
   lstOrder: Order[] = [];
@@ -49,6 +49,20 @@ export class PurchaseOrderDetailComponent {
             } else {
               this.title = 'Đơn hàng đã hoàn thành';
             }
+          }
+        },
+        (error) => {
+          console.error('Error fetching product details:', error);
+          //Xử lý lỗi theo ý bạn
+        }
+      );
+    });
+    this.route.queryParams.subscribe((params: any) => {
+      this.idparams = params.orderId;
+      this.orderServices.getOrderLog(params.orderId).subscribe(
+        (data) => {
+          if (data) {
+
           }
         },
         (error) => {

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class OderService {
   private baseURL = 'https://localhost:44383';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   createOder(
     cartDetailID: any,
@@ -74,9 +74,8 @@ export class OderService {
         responseType: 'json',
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem('currentUser') ?? '').data.token
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('currentUser') ?? '').data.token
+            }`,
         }),
       }
     );
@@ -93,9 +92,26 @@ export class OderService {
         responseType: 'json',
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem('currentUser') ?? '').data.token
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('currentUser') ?? '').data.token
+            }`,
+        }),
+      }
+    );
+  }
+
+  getOrderLog(id: string): Observable<any> {
+    const body = {
+      token: JSON.parse(localStorage.getItem('currentUser') ?? '').data.token,
+    };
+    return this.httpClient.request(
+      'GET',
+      `${this.baseURL}/Order/GetUseLog?orderId=${id}`,
+      {
+        responseType: 'json',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('currentUser') ?? '').data.token
+            }`,
         }),
       }
     );
