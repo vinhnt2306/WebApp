@@ -50,11 +50,14 @@ export class PurchaseOrderDetailComponent {
               this.title = 'Đơn hàng đã hoàn thành';
             }
           }
+          console.log(data);
+          console.log(this.orderDetail)
         },
         (error) => {
           console.error('Error fetching product details:', error);
           //Xử lý lỗi theo ý bạn
         }
+        
       );
     });
     this.route.queryParams.subscribe((params: any) => {

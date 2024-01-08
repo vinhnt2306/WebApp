@@ -5,6 +5,7 @@ import { CartService } from '../service/cart.service';
 import { GetlistpaymentService } from '../service/getlistpayment.service';
 import { VoucherService } from '../service/voucher.service';
 import { OderService } from '../service/oder.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -44,8 +45,8 @@ export class PaymentComponent {
 
   idPayment: any;
 
-  nameUSer: any;
-  phoneNumber: any;
+  receiverName: any;
+  receiverPhone: any;
 
   tongtien: number = 0;
   tongtienhang: number = 0;
@@ -56,7 +57,8 @@ export class PaymentComponent {
     private cartService: CartService,
     private getListPaymentService: GetlistpaymentService,
     private vouncherService: VoucherService,
-    private oderService: OderService
+    private oderService: OderService,
+    private router : Router
   ) {}
 
   ngOnInit(): void {
@@ -200,12 +202,15 @@ export class PaymentComponent {
       console.log(this.confirmResponse);
       alert('Đặt hàng thành công');
     });
+    this.router.navigate(['profile/purchase-order'])
   }
 
   onSubmitAddress() {
-    console.log(this.nameUSer);
-    return;
+    console.log(this.receiverName);
+
     let payload = {
+      receiverName:this.receiverName,
+      receiverPhone:this.receiverPhone,
       provinceName: this.selectedProvinceId.ProvinceName,
       provinceId: this.selectedProvinceId.ProvinceID,
       districName: this.selectedDistrictsId.DistrictName,

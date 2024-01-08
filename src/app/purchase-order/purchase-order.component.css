@@ -26,3 +26,6 @@
     display: flex;
     gap: 20px;
 }
+hr.new4 {
+    border: 1px solid red;
+  }

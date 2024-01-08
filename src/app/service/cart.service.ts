@@ -10,10 +10,11 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) {}
   //AddToCart
-  addToCart(productId: string, quantity: number): Observable<any> {
+  addToCart(productId: string, quantity: number,LoginType:boolean): Observable<any> {
     const body = {
       ProductId: productId,
       Quantity: quantity,
+      LoginType:LoginType=false,
       token : JSON.parse(localStorage.getItem('currentUser')??"").data.token
     };
 

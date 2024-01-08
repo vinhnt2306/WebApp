@@ -1,33 +1,40 @@
 <div>
     <nz-tabset>
         <nz-tab nzTitle="Tất cả">
+            <h1>Đơn hàng đã đặt</h1>
+
             <div *ngFor="let order of lstOrder; let i=index;">
                 <div class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
@@ -37,34 +44,39 @@
             </div>
 
         </nz-tab>
-        <nz-tab nzTitle="Chờ xác nhật">
+        <nz-tab nzTitle="Chờ xác nhận">
             <div *ngFor="let order of lstOrder; let i=index;">
-                <div *ngIf="order.status == 0" class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                <div *ngIf="order.status === 0" class="WrapperOrder">
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
@@ -75,32 +87,37 @@
         </nz-tab>
         <nz-tab nzTitle="Chờ lấy hàng">
             <div *ngFor="let order of lstOrder; let i=index;">
-                <div *ngIf="order.status == 3" class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                <div *ngIf="order.status === 3" class="WrapperOrder">
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
@@ -111,32 +128,37 @@
         </nz-tab>
         <nz-tab nzTitle="Đang giao">
             <div *ngFor="let order of lstOrder; let i=index;">
-                <div *ngIf="order.status == 4" class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                <div *ngIf="order.status === 4" class="WrapperOrder">
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
@@ -147,32 +169,37 @@
         </nz-tab>
         <nz-tab nzTitle="Đã giao">
             <div *ngFor="let order of lstOrder; let i=index;">
-                <div *ngIf="order.status == 5" class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                <div *ngIf="order.status === 5" class="WrapperOrder">
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>
@@ -183,32 +210,37 @@
         </nz-tab>
         <nz-tab nzTitle="Đã hủy">
             <div *ngFor="let order of lstOrder; let i=index;">
-                <div *ngIf="order.status == 6" class="WrapperOrder">
-                    <div *ngFor="let shoes of order.products; let i = index">
-                        <div class="line">
-                            <img src={{shoes?.url}} alt="">
-                            <div style="flex: 1;">
-                                <div class="name">{{shoes?.productName}}</div>
-                                <!-- <div class="name">"ok""</div> -->
+                <div *ngIf="order.status === 6" class="WrapperOrder">
+                    <div *ngFor="let pd of order.products; let i = index">
+                        <div class="wp">
+                            <div className="wp" style="flex: 1;">
                                 <div class="wp">
-                                    <div className="price">
-                                        {{shoes?.price}}
-                                    </div>
-                                    <div>
-                                        {{shoes?.quantity}}
+                                    <div>Tên sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.productName}}
                                     </div>
                                 </div>
-
+                                <div class="wp">
+                                    <div>Giá sản phẩm:</div>
+                                    <div className="wp">
+                                        {{pd?.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <hr class="new4">
                     </div>
                     <div class="wp">
                         <div>Phí ship</div>
-                        <div>{{order.amountShip}}</div>
+                        <div>{{order.amountShip | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
-                        <div>{{order.products.length}} sản phẩm</div>
-                        <div>Thành tiền: {{order.totalAmount}}</div>
+                        <div>Số lượng sản phẩm:</div>
+                        <div>{{order.products.length}}</div>
+                    </div>
+                    <div class="wp">
+                        <div>Thành tiền:</div>
+                        <div>{{order.totalAmount | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</div>
                     </div>
                     <div class="wp">
                         <div></div>

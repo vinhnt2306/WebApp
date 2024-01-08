@@ -60,6 +60,8 @@ getListWardByDistrictId(id: number) : Observable <any> {
 
 createAddress(payload:any) : Observable<any> {
   let body={
+    receiverName:payload.receiverName,
+    receiverPhone:payload.receiverPhone,
     provinceName:payload.provinceName,
     provinceId:payload.provinceId,
     districName:payload.districName,

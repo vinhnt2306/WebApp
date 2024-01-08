@@ -27,6 +27,7 @@ const routes: Routes = [
     component: ProfileComponent,
     children: [
       { path: 'profile-user', component: ProfileUserComponent },
+      
       {
         path: 'purchase-order',
         component: PurchaseOrderComponent,

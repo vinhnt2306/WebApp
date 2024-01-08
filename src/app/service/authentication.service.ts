@@ -21,5 +21,6 @@ export class AuthenticationService {
   }
   logout(): void {
     localStorage.removeItem('currentUser');
+    window.location.reload();
   }
 }
