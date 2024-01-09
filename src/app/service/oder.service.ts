@@ -37,6 +37,7 @@ export class OderService {
       amountShip: payload.amountShip,
       totalAmount: payload.totalAmount,
       addressDelivery: payload.addressDelivery,
+      addressDeliveryId: payload.addressDeliveryId,
       paymentMethodId: payload.paymentMethodId,
       voucherID: null,
     };
@@ -105,7 +106,7 @@ export class OderService {
     };
     return this.httpClient.request(
       'GET',
-      `${this.baseURL}/Order/GetUseLog?orderId=${id}`,
+      `${this.baseURL}/api/Order/GetUseLog?orderId=${id}`,
       {
         responseType: 'json',
         headers: new HttpHeaders({

@@ -19,6 +19,7 @@ export class PurchaseOrderDetailComponent {
   idparams = 0;
   orderDetail: any;
   lstOrder: Order[] = [];
+  dataLog: any = [];
   ngOnInit(): void {
     //Lấy id từ route parameters
     this.route.queryParams.subscribe((params: any) => {
@@ -57,7 +58,7 @@ export class PurchaseOrderDetailComponent {
           console.error('Error fetching product details:', error);
           //Xử lý lỗi theo ý bạn
         }
-        
+
       );
     });
     this.route.queryParams.subscribe((params: any) => {
@@ -65,7 +66,7 @@ export class PurchaseOrderDetailComponent {
       this.orderServices.getOrderLog(params.orderId).subscribe(
         (data) => {
           if (data) {
-
+            this.dataLog = data;
           }
         },
         (error) => {

@@ -58,8 +58,8 @@ export class PaymentComponent {
     private getListPaymentService: GetlistpaymentService,
     private vouncherService: VoucherService,
     private oderService: OderService,
-    private router : Router
-  ) {}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     //get ra địa chỉ khách hàng
@@ -191,6 +191,7 @@ export class PaymentComponent {
       amountShip: this.orderResponse.amountShip,
       totalAmount: this.orderResponse.totalAmount,
       addressDelivery: this.addRessChoose[0].id,
+      addressDeliveryId: this.addRessChoose[0].id,
       paymentMethodId: this.idPayment
         ? this.idPayment
         : this.addRessChoose[0].id,
@@ -209,8 +210,8 @@ export class PaymentComponent {
     console.log(this.receiverName);
 
     let payload = {
-      receiverName:this.receiverName,
-      receiverPhone:this.receiverPhone,
+      receiverName: this.receiverName,
+      receiverPhone: this.receiverPhone,
       provinceName: this.selectedProvinceId.ProvinceName,
       provinceId: this.selectedProvinceId.ProvinceID,
       districName: this.selectedDistrictsId.DistrictName,

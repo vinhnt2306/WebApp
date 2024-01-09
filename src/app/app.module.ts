@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-
+import { NzTimelineModule } from 'ng-zorro-antd/timeline'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -39,14 +39,15 @@ import { PurchaseOrderDetailComponent } from './purchase-order-detail/purchase-o
     ProfileComponent,
     PurchaseOrderComponent,
     ProfileUserComponent,
-    PurchaseOrderDetailComponent
+    PurchaseOrderDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NzTabsModule
+    NzTabsModule,
+    NzTimelineModule
   ],
   providers: [],
   bootstrap: [AppComponent]
