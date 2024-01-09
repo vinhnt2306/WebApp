@@ -1,347 +1,366 @@
 <!-- Start Hero Section -->
 <div class="hero" style="background: black; color: #FFF;">
-  <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-lg-5">
-        <div class="intro-excerpt">
-          <h1>Thanh Toán</h1>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Thanh Toán</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- End Hero Section -->
 <br>
 <div class="container">
-  <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-      <div class="col">
-        <div class="ibox">
-          <!--Địa chỉ mua hàng-->
-          <div class="card">
-            <div class="line"></div>
-            <div class="card-header d-flex align-items-center justify-content-between">
-              <div><i class="fa-solid fa-location-dot"
-                  style="color: #000000;margin-bottom: 10px;margin-right: 10px;"></i>
-                <h4>Địa chỉ mua hàng</h4>
-              </div>
-              <div class="navbar-adress">
-                <!--Thêm mới địa chỉ-->
-                <a href="" class="btn btn-default btn-rounded " data-toggle="modal" data-target="#modalLoginForm"
-                  style="color: #4080ee;">Thêm mới địa chỉ</a>
-                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        <h3>Địa chỉ của tôi</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col">
+                <div class="ibox">
+                    <!--Địa chỉ mua hàng-->
+                    <div class="card">
+                        <div class="line"></div>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div><i class="fa-solid fa-location-dot" style="color: #000000;margin-bottom: 10px;margin-right: 10px;"></i>
+                                <h4>Địa chỉ mua hàng</h4>
+                            </div>
+                            <div class="navbar-adress">
+                                <!--Thêm mới địa chỉ-->
+                                <a href="" class="btn btn-default btn-rounded " data-toggle="modal" data-target="#modalLoginForm" style="color: #4080ee;">Thêm mới địa chỉ</a>
+                                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h3>Địa chỉ của tôi</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body modal-lg">
-                        <div class="">
-                          <form (ngSubmit)="onSubmitAddress()">
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row">
-                              <div class="col">
-                                <label class="form-label" for="form6Example1">Tên</label>
-                                <input [(ngModel)]="receiverName" type="text" id="form6Example1" class="form-control"
-                                  name="nameUSer" />
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <div data-mdb-input-init class="form-group">
-                                  <label class="form-label" for="form6Example2">Số điện thoại</label>
-                                  <input [(ngModel)]="receiverPhone" name="phoneNumber" type="text" id="form6Example2"
-                                    class="form-control" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <label class="form-label" for="form6Example1">Tỉnh</label>
-                                <div data-mdb-input-init class="form-group">
-                                  <select [(ngModel)]="selectedProvinceId" class="form-control"
-                                    name="selectedProvinceId" (change)="onProvinceChange()">
+                                            </div>
+                                            <div class="modal-body modal-lg">
+                                                <div class="">
+                                                    <form (ngSubmit)="onSubmitAddress()">
+                                                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label" for="form6Example1">Tên</label>
+                                                                <input [(ngModel)]="receiverName" type="text" id="form6Example1" class="form-control" name="nameUSer" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div data-mdb-input-init class="form-group">
+                                                                    <label class="form-label" for="form6Example2">Số điện thoại</label>
+                                                                    <input [(ngModel)]="receiverPhone" name="phoneNumber" type="text" id="form6Example2" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label" for="form6Example1">Tỉnh</label>
+                                                                <div data-mdb-input-init class="form-group">
+                                                                    <select [(ngModel)]="selectedProvinceId" class="form-control" name="selectedProvinceId" (change)="onProvinceChange()">
                                     <option *ngFor="let province of provinces" [ngValue]="province">
                                       {{province.ProvinceName}}
                                     </option>
                                   </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <label class="form-label" for="form6Example2">Huyện</label>
-                                <div data-mdb-input-init class="form-group">
-                                  <select *ngIf="districts && districts.length > 0" class="form-control"
-                                    [(ngModel)]="selectedDistrictsId" name="selectedDistricts"
-                                    (change)="onDistrictsChange()">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label" for="form6Example2">Huyện</label>
+                                                                <div data-mdb-input-init class="form-group">
+                                                                    <select *ngIf="districts && districts.length > 0" class="form-control" [(ngModel)]="selectedDistrictsId" name="selectedDistricts" (change)="onDistrictsChange()">
                                     <option *ngFor="let district of districts" [ngValue]="district">
                                       {{district.DistrictName}}
                                     </option>
                                   </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <label class="form-label" for="form6Example2">Xã</label>
-                                <div data-mdb-input-init class="form-group">
-                                  <select *ngIf="wards && wards.length > 0" name="selectedWard"
-                                    [(ngModel)]="selectedWardId" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label" for="form6Example2">Xã</label>
+                                                                <div data-mdb-input-init class="form-group">
+                                                                    <select *ngIf="wards && wards.length > 0" name="selectedWard" [(ngModel)]="selectedWardId" class="form-control">
                                     <option *ngFor="let ward of wards" [ngValue]="ward">
                                       {{ward.WardName}}
                                     </option>
                                   </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <h4 class="mb-3">Trạng thái địa chỉ</h4>
+                                                        <div class="d-block my-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required="" value=true [(ngModel)]="isDefaultAddress">
+                                                                <label class="custom-control-label" for="httt-1">mặc định</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required="" value=false [(ngModel)]="isDefaultAddress">
+                                                                <label class="custom-control-label" for="httt-2">thường</label>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <!-- Submit button -->
+                                                        <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4" type="submit">Lưu</button>
+                                                        <!--End Submit button -->
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
+                                <!--Thêm mới địa chỉ-->
 
-                            <h4 class="mb-3">Trạng thái địa chỉ</h4>
-                            <div class="d-block my-3">
-                              <div class="custom-control custom-radio">
-                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required=""
-                                  value=true [(ngModel)]="isDefaultAddress">
-                                <label class="custom-control-label" for="httt-1">mặc định</label>
-                              </div>
-                              <div class="custom-control custom-radio">
-                                <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required=""
-                                  value=false [(ngModel)]="isDefaultAddress">
-                                <label class="custom-control-label" for="httt-2">thường</label>
-                              </div>
-                            </div>
-                            <br>
-                            <!-- Submit button -->
-                            <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4"
-                              type="submit">Lưu</button>
-                            <!--End Submit button -->
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--Thêm mới địa chỉ-->
-
-                <!--Đổi or chọn địa chỉ-->
-                <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalChangeAddress"
-                  style="color: #4080ee;">Đổi địa chỉ</a>
-                <div class="modal fade" id="modalChangeAddress" tabindex="-1" role="dialog"
-                  aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        <h3>Danh sách địa chỉ</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <!--Đổi or chọn địa chỉ-->
+                                <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalChangeAddress" style="color: #4080ee;">Đổi địa chỉ</a>
+                                <div class="modal fade" id="modalChangeAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h3>Danh sách địa chỉ</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body">
-                          <div *ngFor="let ad of addRess">
-                              <div class="row">
-                                <div class="col-md-3">
-                                  <h4 class="card-text">{{ad.receiverName}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div *ngFor="let ad of addRess">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <h4 class="card-text">{{ad.receiverName}}</h4>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <p class="card-text">{{ad.receiverphone}}</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <p class="card-text">{{ad.address}}</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                                                            <button (click)="onChooseAdress(ad)" class="close" data-dismiss="modal">Chọn</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                  <p class="card-text">{{ad.receiverphone}}</p>  
-                                </div>
-                                <div class="col-md-3">
-                                  <p class="card-text">{{ad.address}}</p>
-                                </div>
-                                <div class="col-md-3">
-                                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
-                                  <button (click)="onChooseAdress(ad)" class="close" data-dismiss="modal">Chọn</button>
-                                </div>
-                              </div>
+                                <!--Đổi or chọn địa chỉ-->
+                                <!--Sửa địa chỉ-->
+                                <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalChangeAddress" style="color: #4080ee;">Sửa địa chỉ</a>
+                            </div>
                         </div>
-                      </div>
+                        <div class="card-body" style="padding: 10px;">
+                            <div class="row" *ngIf="addRessChoose && addRessChoose.length > 0">
+                                <div class="col-md-4">
+                                    <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                                    <p class="card-text-id">{{addRessChoose[0].id}}</p>
+                                </div>
+                                <div class="col-md-1">
+                                    <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                                    <p class="card-text-name">{{addRessChoose[0].receiverName}}</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                                    <p class="card-text-name">{{addRessChoose[0].receiverphone}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- <h5 class="card-title">Địa chỉ</h5> -->
+                                    <p class="card-text-name">{{addRessChoose[0].address}}</p>
+                                </div>
+                                <div class="col-md-1">
+                                    <!-- <h5 class="card-title">Địa chỉ</h5> -->
+                                    <p class="card-text-status">{{addRessChoose[0].status}}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <!--Đổi or chọn địa chỉ-->
-                <!--Sửa địa chỉ-->
-                <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalChangeAddress"
-                  style="color: #4080ee;">Sửa địa chỉ</a>
-              </div>
-            </div>
-            <div class="card-body" style="padding: 10px;">
-              <div class="row" *ngIf="addRessChoose && addRessChoose.length > 0">
-                <div class="col-md-4">
-                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
-                  <p class="card-text-id">{{addRessChoose[0].id}}</p>
-                </div>
-                <div class="col-md-1">
-                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
-                  <p class="card-text-name">{{addRessChoose[0].receiverName}}</p>
-                </div>
-                <div class="col-md-2">
-                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
-                  <p class="card-text-name">{{addRessChoose[0].receiverphone}}</p>
-                </div>
-                <div class="col-md-4">
-                  <!-- <h5 class="card-title">Địa chỉ</h5> -->
-                  <p class="card-text-name">{{addRessChoose[0].address}}</p>
-                </div>
-                <div class="col-md-1">
-                  <!-- <h5 class="card-title">Địa chỉ</h5> -->
-                  <p class="card-text-status">{{addRessChoose[0].status}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--End Địa chỉ mua hàng-->
-          <br>
-          <!--Giỏ-->
-          <h1>Giỏ hàng</h1>
-          <div class="row">
-            <div class="col col-md-12">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Ảnh sản phẩm</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thành tiền</th>
-                  </tr>
-                </thead>
-                <tbody id="datarow">
-                  <tr *ngFor="let cart of cartProductsByPayment ">
-                    <td>
-                      <img [src]="cart.image" class="img-box" style="padding: 4px;width: 50%;">
-                    </td>
-                    <td>{{cart.nameProduct}}</td>
-                    <td class="text">
-                      {{cart.quantity}}
-                    </td>
-                    <td class="text">{{cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</td>
-                    <td class="text">{{cart.quantity*cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
-                    </td>
-                  </tr>
+                    <!--End Địa chỉ mua hàng-->
+                    <br>
+                    <!--Giỏ-->
+                    <h1>Giỏ hàng</h1>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Ảnh sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="datarow">
+                                    <tr *ngFor="let cart of cartProductsByPayment ">
+                                        <td>
+                                            <img [src]="cart.image" class="img-box" style="padding: 4px;width: 50%;">
+                                        </td>
+                                        <td>{{cart.nameProduct}}</td>
+                                        <td class="text">
+                                            {{cart.quantity}}
+                                        </td>
+                                        <td class="text">{{cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ</td>
+                                        <td class="text">{{cart.quantity*cart.price | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ
+                                        </td>
+                                    </tr>
 
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <br>
-          <!---->
-          <!--Voucher-->
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="col md-6">
-                <h4>Voucher</h4>
-              </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <!---->
+                    <!--Voucher-->
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <div class="col md-6">
+                                <h4>Voucher</h4>
+                            </div>
 
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalVouncher"
-                style="color: #4080ee;">Thay đổi</a>
-              <!-- <h5 class="card-title">Phần 4</h5> -->
-              <div class="modal fade" id="modalVouncher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header text-center">
-                      <h3>Chọn Vouncher</h3>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalVouncher" style="color: #4080ee;">Chọn hoặc nhập mã</a>
+                            <!-- <h5 class="card-title">Phần 4</h5> -->
+                            <div class="modal fade" id="modalVouncher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h3>Mã giảm giá</h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="md-form mb-5" *ngFor="let vouncher of getListVouncher">
-                        <div class="row">
-                            <div class="col-md-3">
-                              <p class="card-text">{{vouncher.code}}</p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div>Mã giảm giá</div>
+                                                <div><input width="100%" type="text"></div>
+                                                <div><button>Áp dụng</button></div>
+                                            </div>
+                                            <div *ngIf="getListVouncher.length==0">Hiện tại không có voucher</div>
+                                            <div class="WrapperDiscount">
+                                                <div class="WrapperDiscountLeft">
+                                                    <div class="circle"></div>
+                                                    <div class="content">Giảm giá</div>
+                                                </div>
+                                                <div class="WrapperDiscountRigth">
+                                                    <div class="main">
+                                                        <div>
+                                                            <div class="main1">
+                                                                10% đơn 0dd
+                                                            </div>
+                                                            <div class="main1">Tối đa 20000</div>
+                                                        </div>
+                                                        <div class="deal"> Sắp hết hạn:</div>
+                                                    </div>
+                                                    <div class="main2">
+                                                        <input type="radio" [value]="1" [checked]="selectedRadio === 1" (change)="onchangeRadio($event)" (click)="handleClick(1)">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div *ngFor="let vouncher of getListVouncher">
+                                                <div class="WrapperDiscount">
+                                                    <div class="WrapperDiscountLeft">
+                                                        <div class="circle"></div>
+                                                        <div class="content">Freeship</div>
+                                                    </div>
+                                                    <div class="WrapperDiscountRigth">
+                                                        <div class="main">
+                                                            <div>
+                                                                <div class="main1">
+                                                                    10% đơn 0dd
+                                                                </div>
+                                                                <div class="main1">Tối đa 20000</div>
+                                                            </div>
+                                                            <div class="deal"> Sắp hết hạn:</div>
+                                                        </div>
+                                                        <div class="main2">
+                                                            <input type="radio" [value]="2" [checked]="selectedRadio === 2" (change)="onchangeFreeShip($event)" (click)="handleClick(2)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn">
+                                                <div></div>
+                                                <div>
+                                                    <button>Hủy</button>
+                                                    <button (click)="handleApdung()">
+                                                  Áp dụng
+                                                </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                              <p class="card-text">{{vouncher.name}}</p>
-                            </div>
-                            <div class="col-md-3">
-                              <p class="card-text">{{vouncher.description}}</p>  
-                            </div>
-                            
-                            <div class="col-md-3">
-                              <!-- <h5 class="card-title">Tên + Sdt</h5> -->
-                            
-                            </div>
-                          
                         </div>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--End Voucher-->
-          <br>
-          <!--Phí vận chuyển-->
-          <div class="card">
-            <div class="card-header ">
-              <h4>Chi tiết thanh toán</h4>
-              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
-                <div>Tổng tiền hàng:</div>
-                <div>{{tongtienhang | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
-              </div>
-              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
-                <div>Phí vận chuyển:</div>
-                <div>{{tienship | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
-              </div>
-              <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
-                <div>Tổng:</div>
-                <div>{{tongtien| currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
-              </div>
-            </div>
-          </div>
-          <!--End Phí vận chuyển-->
-          <br>
-          <!--Phương thức thanh toán-->
-          <h4 class="mb-3">Hình thức thanh toán</h4>
-          <div action="">
-            <div class="form-check" *ngFor="let payment of getListPayment">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                [value]="payment.id" [(ngModel)]="idPayment">
-              <label class="form-check-label" for="flexRadioDefault1">
+                    <!--End Voucher-->
+                    <br>
+                    <!--Phí vận chuyển-->
+                    <div class="card">
+                        <div class="card-header ">
+                            <h4>Chi tiết thanh toán</h4>
+                            <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                                <div>Tổng tiền hàng:</div>
+                                <div>{{tongtienhang | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                                <div>Phí vận chuyển:</div>
+                                <div>{{tienship | currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                                <div>Tổng:</div>
+                                <div>{{tongtien| currency:'VND': 'symbol':'1.0-0' | slice: 1}}đ </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Phí vận chuyển-->
+                    <br>
+                    <!--Phương thức thanh toán-->
+                    <h4 class="mb-3">Hình thức thanh toán</h4>
+                    <div action="">
+                        <div class="form-check" *ngFor="let payment of getListPayment">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="payment.id" [(ngModel)]="idPayment">
+                            <label class="form-check-label" for="flexRadioDefault1">
                 {{payment.name}}
               </label>
-            </div>
-            <!-- <div class="form-check">
+                        </div>
+                        <!-- <div class="form-check">
               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
               <label class="form-check-label" for="flexRadioDefault2">
                 {{payment.name}}
 
               </label>
             </div> -->
-          </div>
-          <!--End Phương thức thanh toán-->
+                    </div>
+                    <!--End Phương thức thanh toán-->
 
-          <br>
-          <hr>
-          <div class="ibox-content" style="padding: 0px;">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang" (click)="onConfirmOrder()"
-              data-toggle="modal" data-target="#ConfirmModal">Đặt
+                    <br>
+                    <hr>
+                    <div class="ibox-content" style="padding: 0px;">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang" (click)="onConfirmOrder()" data-toggle="modal" data-target="#ConfirmModal">Đặt
               hàng</button>
-            <!-- Modal -->
-            <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thông tin mua hàng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <!-- Modal -->
+                        <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thông tin mua hàng</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
-                  <div class="modal-body" *ngFor="let confirm of confirmResponse">
-                    Tên khách hàng : {{confirm.nameCustomer}} Tên sản phẩm : {{confirm.nameCustomer}}
-                  </div>
+                                    </div>
+                                    <div class="modal-body" *ngFor="let confirm of confirmResponse">
+                                        Tên khách hàng : {{confirm.nameCustomer}} Tên sản phẩm : {{confirm.nameCustomer}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

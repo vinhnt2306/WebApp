@@ -46,10 +46,12 @@ export class PaymentComponent {
 
   receiverName: any;
   receiverPhone: any;
-
   tongtien: number = 0;
   tongtienhang: number = 0;
   tienship: number = 0;
+  selectedRadio: any = '';
+  selectedFreeShip: any = '';
+  lastClicked: any = null;
 
   constructor(
     private addressService: AddressService,
@@ -58,7 +60,7 @@ export class PaymentComponent {
     private vouncherService: VoucherService,
     private oderService: OderService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     //get ra địa chỉ khách hàng
@@ -68,9 +70,8 @@ export class PaymentComponent {
       this.addRessChoose = [responese.data.listAddress[0]];
       this.addRess = responese.data.listAddress;
       addChooes = [responese.data.listAddress];
-      console.log(addChooes);
     });
-    
+
     //get ra thành phố
     this.getProvinces();
     //get ra sản phẩm trong giỏ hàng CartItem
@@ -90,7 +91,6 @@ export class PaymentComponent {
     this.vouncherService.getListVouncher().subscribe((response: any) => {
       this.getListVouncher = response.data.lstVoucher;
     });
-   
 
     setTimeout(() => {
       if (addChooes.length > 0 && lstCart.length > 0) {
@@ -98,7 +98,26 @@ export class PaymentComponent {
       }
     }, 5000);
   }
+  onchangeRadio(value: any) {
+    this.selectedRadio = value.value;
+  }
+  onchangeFreeShip(value: any) {
+    this.selectedFreeShip = value.value;
+  }
 
+  handleClick(clickedValue: any) {
+    if (this.selectedRadio == clickedValue) {
+      this.selectedRadio = ''; // Hủy chọn nếu đã click lần thứ hai
+    }
+    console.log(clickedValue);
+    console.log(this.selectedRadio);
+  }
+
+  handleApdung() {
+    if (this.selectedFreeShip) {
+      this.ConfirmOder();
+    }
+  }
   onChooseAdress(address: any): void {
     this.addRessChoose = [address];
     this.ConfirmOder();
@@ -155,9 +174,12 @@ export class PaymentComponent {
     let payload = {
       CartDetailID: cartId,
       PaymentMenthodID: this.getListPayment[0].id,
-      AddressDeliveryId: this.idPayment? this.idPayment: this.addRessChoose[0].id,
+      AddressDeliveryId: this.idPayment
+        ? this.idPayment
+        : this.addRessChoose[0].id,
     };
-    this.oderService.createOder(
+    this.oderService
+      .createOder(
         payload.CartDetailID,
         this.getListPayment[0].id,
         payload.AddressDeliveryId
@@ -200,7 +222,7 @@ export class PaymentComponent {
       console.log(this.confirmResponse);
       alert('Đặt hàng thành công');
     });
-    this.router.navigate(['profile/purchase-order'])
+    this.router.navigate(['profile/purchase-order']);
   }
 
   onSubmitAddress() {
