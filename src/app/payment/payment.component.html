@@ -169,15 +169,23 @@
             </div>
             <div class="card-body" style="padding: 10px;">
               <div class="row" *ngIf="addRessChoose && addRessChoose.length > 0">
-                <div class="col-md-5">
+                <div class="col-md-4">
                   <!-- <h5 class="card-title">Tên + Sdt</h5> -->
                   <p class="card-text-id">{{addRessChoose[0].id}}</p>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-1">
+                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                  <p class="card-text-name">{{addRessChoose[0].receiverName}}</p>
+                </div>
+                <div class="col-md-2">
+                  <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                  <p class="card-text-name">{{addRessChoose[0].receiverphone}}</p>
+                </div>
+                <div class="col-md-4">
                   <!-- <h5 class="card-title">Địa chỉ</h5> -->
                   <p class="card-text-name">{{addRessChoose[0].address}}</p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <!-- <h5 class="card-title">Địa chỉ</h5> -->
                   <p class="card-text-status">{{addRessChoose[0].status}}</p>
                 </div>
@@ -232,7 +240,7 @@
               <!-- <h5 class="card-title">Phần 4</h5> -->
               <div class="modal fade" id="modalVouncher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header text-center">
                       <h3>Chọn Vouncher</h3>
@@ -240,14 +248,24 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body mx-3">
+                    <div class="modal-body">
                       <div class="md-form mb-5" *ngFor="let vouncher of getListVouncher">
                         <div class="row">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                              id="flexRadioDefault1" />
-                            <label class="form-check-label" for="flexRadioDefault1"> {{vouncher.name}} </label>
-                          </div>
+                            <div class="col-md-3">
+                              <p class="card-text">{{vouncher.code}}</p>
+                            </div>
+                            <div class="col-md-3">
+                              <p class="card-text">{{vouncher.name}}</p>
+                            </div>
+                            <div class="col-md-3">
+                              <p class="card-text">{{vouncher.description}}</p>  
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <!-- <h5 class="card-title">Tên + Sdt</h5> -->
+                            
+                            </div>
+                          
                         </div>
                       </div>
                     </div>

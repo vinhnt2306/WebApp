@@ -17,7 +17,6 @@ export class CartService {
       LoginType:LoginType=false,
       token : JSON.parse(localStorage.getItem('currentUser')??"").data.token
     };
-
     return this.httpClient.post(`${this.baseURL}/api/AddToCart/Process`, body)
     // return this.httpClient.post(`${this.baseURL}/api/AddToCart/Process`, body);
   }

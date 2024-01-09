@@ -14,7 +14,7 @@ export class ProductComponent {
 @Input()  product!: Product;
  products : Product[] = [];
 
-  carts : Cart[] = [];
+ carts : Cart[] = [];
 
   productDetail : Product = new Product;
 
@@ -31,9 +31,24 @@ export class ProductComponent {
       console.log(this.products)
   });
   }
-  addToCartProduct(productId : string , quantity : number) {
-    this.cartService.addToCart(productId,quantity,false).subscribe(data => console.log(data))
-    console.log(productId,quantity)
-    alert('thêm sản phẩm vào giỏ hàng thành công')
-  }
+
+  addToCartProduct(productId: string, quantity: number) {
+  this.cartService.addToCart(productId, quantity, false)
+    .subscribe(
+      data => {
+        console.log(data);
+        if(data.status == "200"){
+            alert('thêm sản phẩm vào giỏ hàng thành công');
+        }else{
+          alert('Sản phẩm không đủ số lượng để thêm vui lòng liên hệ cửa hàng.');
+        }
+      },
+      error => {
+        console.error('Lỗi khi thêm sản phẩm vào giỏ hàng:', error);
+        // Xử lý lỗi ở đây, ví dụ: hiển thị thông báo lỗi cho người dùng
+        alert('Sản phẩm đã hết hàng.');
+      }
+    );
+  console.log(productId, quantity);
+}
 }
