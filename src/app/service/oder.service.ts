@@ -13,7 +13,7 @@ export class OderService {
   createOder(
     cartDetailID: any,
     paymentMenthodID: string,
-    addressDeliveryId: string
+    addressDeliveryId: string,
   ): Observable<any> {
     const body = {
       CartDetailID: cartDetailID,
@@ -39,7 +39,7 @@ export class OderService {
       addressDelivery: payload.addressDelivery,
       addressDeliveryId: payload.addressDeliveryId,
       paymentMethodId: payload.paymentMethodId,
-      voucherID: null,
+      voucherID: payload.voucherID,
     };
     return this.httpClient.post(
       `${this.baseURL}/api/ConfirmOrder/Process`,

@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { AddressService } from '../service/address.service';
-import { Observable } from 'rxjs';
 import { CartService } from '../service/cart.service';
 import { GetlistpaymentService } from '../service/getlistpayment.service';
 import { VoucherService } from '../service/voucher.service';
 import { OderService } from '../service/oder.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +22,7 @@ export class PaymentComponent {
 
   addRess: any[] = []; //Địa chỉ khách hàng
 
-  addRessChoose: any[] = []; //Địa chỉ khách hàng
+  addRessChoose: any[] = []; // chọn Địa chỉ khách hàng
 
   cartProductsByPayment: any[] = []; //sản phẩm trong giỏ hàng CartItem
 
@@ -71,6 +70,7 @@ export class PaymentComponent {
       addChooes = [responese.data.listAddress];
       console.log(addChooes);
     });
+    
     //get ra thành phố
     this.getProvinces();
     //get ra sản phẩm trong giỏ hàng CartItem
@@ -90,7 +90,7 @@ export class PaymentComponent {
     this.vouncherService.getListVouncher().subscribe((response: any) => {
       this.getListVouncher = response.data.lstVoucher;
     });
-    console.log(addChooes);
+   
 
     setTimeout(() => {
       if (addChooes.length > 0 && lstCart.length > 0) {
@@ -155,12 +155,9 @@ export class PaymentComponent {
     let payload = {
       CartDetailID: cartId,
       PaymentMenthodID: this.getListPayment[0].id,
-      AddressDeliveryId: this.idPayment
-        ? this.idPayment
-        : this.addRessChoose[0].id,
+      AddressDeliveryId: this.idPayment? this.idPayment: this.addRessChoose[0].id,
     };
-    this.oderService
-      .createOder(
+    this.oderService.createOder(
         payload.CartDetailID,
         this.getListPayment[0].id,
         payload.AddressDeliveryId
