@@ -268,20 +268,30 @@ export class PaymentComponent {
     let cartId = this.cartProductsByPayment.map(
       (response: any) => response.cartDetailID
     );
-    let payload = {
+    let voucher = []
+    if (this.selectedFreeShip) {
+      voucher.push(this.selectedFreeShip.toString())
+    }
+    if (this.selectedRadio) {
+      voucher.push(this.selectedRadio.toString())
+    }
+    let payload: any = {
       token: JSON.parse(localStorage.getItem('currentUser') ?? '').data.token,
       description: 'không comment',
       cartDetailId: cartId,
       totalAmountDiscount: 0,
       amountShip: this.orderResponse.amountShip,
+      voucherID: voucher.length > 0 ? voucher : [""],
       totalAmount: this.orderResponse.totalAmount,
       addressDelivery: this.addRessChoose[0].id,
       addressDeliveryId: this.addRessChoose[0].id,
       paymentMethodId: this.idPayment
         ? this.idPayment
         : this.addRessChoose[0].id,
-      voucherID: null,
     };
+    if (voucher.length == 0) {
+      delete payload.voucherID;
+    }
     this.oderService.confirmOrder(payload).subscribe((res) => {
       this.cartProductsByPayment = [];
       this.confirmResponse = res.data;
