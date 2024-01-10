@@ -257,7 +257,6 @@
                             <div class="col md-6">
                                 <h4>Voucher</h4>
                             </div>
-
                             <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
                                 data-target="#modalVouncher" style="color: #4080ee;">Chọn hoặc nhập mã</a>
                             <!-- <h5 class="card-title">Phần 4</h5> -->
@@ -291,17 +290,17 @@
                                                                 <div>
                                                                     <div *ngIf="vouncher.unit=='%'">
                                                                         <div class="main1">
-                                                                            {{vouncher.discount}}% đơn 0dd
+                                                                            {{vouncher.discount}} %
                                                                         </div>
                                                                     </div>
                                                                     <div *ngIf="vouncher.unit=='vnd'">
                                                                         <div class="main1">
                                                                             {{(
                                                                             vouncher.discount
-                                                                            )}}% đơn 0dd
+                                                                            )}} vnd
                                                                         </div>
                                                                     </div>
-                                                                    <div class="main1">Tối đa 20000</div>
+                                                                    <div class="main1">{{vouncher.name}}</div>
                                                                 </div>
                                                                 <div class="deal"> Sắp hết hạn:
                                                                     {{caculatorEndTime(vouncher.endDate)}}</div>
@@ -330,19 +329,19 @@
                                                                 <div>
                                                                     <div *ngIf="vouncher.unit=='%'">
                                                                         <div class="main1">
-                                                                            {{vouncher.discount}}% đơn 0dd
+                                                                            {{vouncher.discount}}%
                                                                         </div>
                                                                     </div>
                                                                     <div *ngIf="vouncher.unit=='vnd'">
                                                                         <div class="main1">
-                                                                            {{(
-                                                                            vouncher.discount
-                                                                            )}}% đơn 0dd
+                                                                            {{vouncher.discount}} vnd
                                                                         </div>
                                                                     </div>
-                                                                    <div class="main1">Tối đa 20000</div>
+                                                                    <div class="main1">{{vouncher.name}}</div>
                                                                 </div>
-                                                                <div class="deal"> Sắp hết hạn:</div>
+                                                                <div class="deal"> Sắp hết hạn:
+                                                                    {{caculatorEndTime(vouncher.endDate)}}
+                                                                </div>
                                                             </div>
                                                             <div class="main2">
                                                                 <input type="radio" [value]="vouncher.id"
@@ -367,6 +366,15 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            
+                        </div>
+                        <div class="card-body">
+                            <div class="vouncheradd" >
+                                {{selectedRadioData?.name}}
+                            </div>
+                            <div class="vouncheradd">
+                                {{selectedFreeShipData?.name}}
                             </div>
                         </div>
                     </div>

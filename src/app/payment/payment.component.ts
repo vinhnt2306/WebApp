@@ -25,6 +25,10 @@ export class PaymentComponent {
 
   addRessChoose: any[] = []; // chọn Địa chỉ khách hàng
 
+  vounCher: any[] = [];
+
+  vounCherChonse: any[] = [];//chọn vouncher khách hàng
+
   cartProductsByPayment: any[] = []; //sản phẩm trong giỏ hàng CartItem
 
   selectedProvinceId: any; // Lưu ID của tỉnh đã chọn
@@ -57,6 +61,9 @@ export class PaymentComponent {
   lastClicked: any = null;
   isFreeShipSelected: any;
   isDiscountSelected: any;
+
+  selectedRadioData: any; 
+  selectedFreeShipData: any;
   constructor(
     private addressService: AddressService,
     private cartService: CartService,
@@ -121,15 +128,18 @@ export class PaymentComponent {
       this.isFreeShipSelected = true;
     }
   }
-
+  
   handleClick(clickedValue: any) {
     this.selectedRadio = clickedValue
+    this.selectedRadioData = this.getListVouncher.find(x => x.id == this.selectedRadio)
   }
+
   handleClickFreeShip(clickedValue: any) {
     // if (this.selectedFreeShip == clickedValue) {
     //   this.selectedFreeShip = ''; // Hủy chọn nếu đã click lần thứ hai
     // }
     this.selectedFreeShip = clickedValue;
+    this.selectedFreeShipData = this.getListVouncher.find(x => x.id == this.selectedFreeShip)
   }
 
   handleApdung() {
@@ -240,7 +250,7 @@ export class PaymentComponent {
       
     };
     if (voucher.length == 0) {
-      delete payload.voucherID;
+       payload.voucherID = null;
     }
     this.oderService
       .createOder(
