@@ -5,6 +5,7 @@ import { GetlistpaymentService } from '../service/getlistpayment.service';
 import { VoucherService } from '../service/voucher.service';
 import { OderService } from '../service/oder.service';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-payment',
@@ -48,11 +49,14 @@ export class PaymentComponent {
   receiverPhone: any;
   tongtien: number = 0;
   tongtienhang: number = 0;
+  freeship: number = 0;
+  discount: number = 0;
   tienship: number = 0;
   selectedRadio: any = '';
   selectedFreeShip: any = '';
   lastClicked: any = null;
-
+  isFreeShipSelected: any;
+  isDiscountSelected: any;
   constructor(
     private addressService: AddressService,
     private cartService: CartService,
@@ -60,7 +64,7 @@ export class PaymentComponent {
     private vouncherService: VoucherService,
     private oderService: OderService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     //get ra địa chỉ khách hàng
@@ -100,17 +104,32 @@ export class PaymentComponent {
   }
   onchangeRadio(value: any) {
     this.selectedRadio = value.value;
+    if (this.isDiscountSelected && this.selectedFreeShip === value.target.value) {
+      this.selectedRadio = "";
+      this.isDiscountSelected = false;
+    } else {
+      this.selectedRadio = value.target.value;
+      this.isDiscountSelected = true;
+    }
   }
   onchangeFreeShip(value: any) {
-    this.selectedFreeShip = value.value;
+    if (this.isFreeShipSelected && this.selectedFreeShip === value.target.value) {
+      this.selectedFreeShip = "";
+      this.isFreeShipSelected = false;
+    } else {
+      this.selectedFreeShip = value.target.value;
+      this.isFreeShipSelected = true;
+    }
   }
 
   handleClick(clickedValue: any) {
-    if (this.selectedRadio == clickedValue) {
-      this.selectedRadio = ''; // Hủy chọn nếu đã click lần thứ hai
-    }
-    console.log(clickedValue);
-    console.log(this.selectedRadio);
+    this.selectedRadio = clickedValue
+  }
+  handleClickFreeShip(clickedValue: any) {
+    // if (this.selectedFreeShip == clickedValue) {
+    //   this.selectedFreeShip = ''; // Hủy chọn nếu đã click lần thứ hai
+    // }
+    this.selectedFreeShip = clickedValue;
   }
 
   handleApdung() {
@@ -146,7 +165,6 @@ export class PaymentComponent {
   getDistrictsByProvinceId(provinceId: number): void {
     this.addressService.getListDistrictByProvinceId(provinceId).subscribe(
       (data: any) => {
-        console.log(data);
         this.districts = data.data;
       },
       (error) => {
@@ -158,39 +176,87 @@ export class PaymentComponent {
     this.addressService.getListWardByDistrictId(districtId).subscribe(
       (data: any) => {
         this.wards = data.data;
-
-        console.log(this.wards);
       },
       (error) => {
         console.error('Error fetching districts:', error);
       }
     );
   }
+  caculatorEndTime = (date: any) => {
+    const result = moment
+      .duration(
+        moment(date, "YYYY/MM/DD HH:mm").diff(
+          moment(new Date(), "YYYY/MM/DD HH:mm")
+        )
+      )
+      .asHours();
+    const time = moment.duration(
+      moment(date, "YYYY/MM/DD HH:mm").diff(
+        moment(new Date(), "YYYY/MM/DD HH:mm")
+      )
+    );
 
+    let days = Math.floor(result / 24);
+    let remainingHours = result % 24;
+    let remainingMinutes = Math.floor((result % 1) * 60);
+    let result2 = "";
+
+    if (days > 0) {
+      result2 += days + " ngày ";
+    }
+
+    if (remainingHours > 0) {
+      result2 += Math.round(remainingHours) + " giờ ";
+    }
+
+    if (remainingMinutes > 0 || (days === 0 && remainingHours === 0)) {
+      result2 += Math.round(remainingMinutes) + " phút ";
+    }
+
+    if (result2 === "") {
+      result2 = "0 phút";
+    }
+
+    return `Còn ${result2}`;
+  };
   ConfirmOder() {
     let cartId = this.cartProductsByPayment.map(
       (response: any) => response.cartDetailID
     );
-    let payload = {
+    let voucher = []
+    if (this.selectedFreeShip) {
+      voucher.push(this.selectedFreeShip.toString())
+    }
+    if (this.selectedRadio) {
+      voucher.push(this.selectedRadio.toString())
+    }
+    let payload: any = {
       CartDetailID: cartId,
+      voucherID: voucher.length > 0 ? voucher : [""],
       PaymentMenthodID: this.getListPayment[0].id,
       AddressDeliveryId: this.idPayment
         ? this.idPayment
         : this.addRessChoose[0].id,
       
     };
+    if (voucher.length == 0) {
+      delete payload.voucherID;
+    }
     this.oderService
       .createOder(
         payload.CartDetailID,
         this.getListPayment[0].id,
-        payload.AddressDeliveryId
+        payload.AddressDeliveryId,
+        payload.voucherID
       )
       .subscribe((data) => {
         this.orderResponse = data.data;
         if (data.data) {
           this.tongtienhang = data.data.totalAmount ? data.data.totalAmount : 0;
           this.tienship = data.data.amountShip ? data.data.amountShip : 0;
-          this.tongtien = this.tongtienhang + this.tienship;
+          this.freeship = this.selectedFreeShip ? this.getListVouncher.find(x => x.id == this.selectedFreeShip).discount : 0;
+          this.discount = this.selectedRadio ? this.getListVouncher.find(x => x.id == this.selectedRadio).discount : 0;
+          this.tongtien = this.tongtienhang + this.tienship - this.freeship - this.discount;
         }
       });
   }
@@ -203,32 +269,39 @@ export class PaymentComponent {
     let cartId = this.cartProductsByPayment.map(
       (response: any) => response.cartDetailID
     );
-    let payload = {
+    let voucher = []
+    if (this.selectedFreeShip) {
+      voucher.push(this.selectedFreeShip.toString())
+    }
+    if (this.selectedRadio) {
+      voucher.push(this.selectedRadio.toString())
+    }
+    let payload: any = {
       token: JSON.parse(localStorage.getItem('currentUser') ?? '').data.token,
       description: 'không comment',
       cartDetailId: cartId,
       totalAmountDiscount: 0,
       amountShip: this.orderResponse.amountShip,
+      voucherID: voucher.length > 0 ? voucher : [""],
       totalAmount: this.orderResponse.totalAmount,
       addressDelivery: this.addRessChoose[0].id,
       addressDeliveryId: this.addRessChoose[0].id,
       paymentMethodId: this.idPayment
         ? this.idPayment
         : this.addRessChoose[0].id,
-      voucherID: null,
     };
+    if (voucher.length == 0) {
+      delete payload.voucherID;
+    }
     this.oderService.confirmOrder(payload).subscribe((res) => {
       this.cartProductsByPayment = [];
       this.confirmResponse = res.data;
-      console.log(this.confirmResponse);
       alert('Đặt hàng thành công');
     });
     this.router.navigate(['profile/purchase-order']);
   }
 
   onSubmitAddress() {
-    console.log(this.receiverName);
-
     let payload = {
       receiverName: this.receiverName,
       receiverPhone: this.receiverPhone,
@@ -240,7 +313,6 @@ export class PaymentComponent {
       wardId: Number(this.selectedWardId.WardCode),
       status: this.isDefaultAddress == 'true' ? true : false,
     };
-    console.log('payload', payload);
     this.addressService.createAddress(payload).subscribe((res) => {
       alert('Them dia chi thanh cong');
       this.addressService.getAddress().subscribe((responese: any) => {
