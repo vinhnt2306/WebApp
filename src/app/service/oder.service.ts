@@ -14,11 +14,13 @@ export class OderService {
     cartDetailID: any,
     paymentMenthodID: string,
     addressDeliveryId: string,
+    voucherID: any
   ): Observable<any> {
     const body = {
       CartDetailID: cartDetailID,
       PaymentMenthodID: paymentMenthodID,
       AddressDeliveryId: addressDeliveryId,
+      voucherID: voucherID,
       token: JSON.parse(localStorage.getItem('currentUser') ?? '').data.token,
       TokenGHN: 'ec8de462-81fa-11ee-a59f-a260851ba65c',
     };
