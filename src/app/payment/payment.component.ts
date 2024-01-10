@@ -177,6 +177,7 @@ export class PaymentComponent {
       AddressDeliveryId: this.idPayment
         ? this.idPayment
         : this.addRessChoose[0].id,
+      
     };
     this.oderService
       .createOder(
