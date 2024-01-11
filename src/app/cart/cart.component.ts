@@ -29,7 +29,7 @@ export class CartComponent {
       }
     })
   }
-
+  
   hanldeRemoveCartItem=(cart:any)=>{
     this.status=true;
     this.cartService.deleteCartItem(cart.cartDetailID).subscribe(data => {alert('Xóa sản phẩm thành công')
@@ -54,13 +54,14 @@ export class CartComponent {
     if(quantity > 0) {
       cart.quantity = quantity
     this.cartService.editCart(cart.cartDetailID, cart.productID, quantity).subscribe(data => console.log(data))
-
+    
     } else {
       //Delete from Cart
       this.hanldeRemoveCartItem(cart)
       return;
     }
-    //API
+    
+    //APIs
   }
 
 }

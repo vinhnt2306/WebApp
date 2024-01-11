@@ -25,7 +25,6 @@ export class CartService {
   getCartItem() : Observable<any>{
     let data = {
       token : JSON.parse(localStorage.getItem('currentUser')??"").data.token
-
     }
     return this.httpClient.request('POST',`${this.baseURL}/api/CartItem/Process`,
     {

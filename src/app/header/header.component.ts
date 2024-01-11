@@ -41,7 +41,6 @@ export class HeaderComponent {
       this.cartService.getCartItem().subscribe((response: any) => {
         this.cartProduct = response.data.cartItem;
         this.calculateTotalQuantity();
-        console.log('Total Quantity:', this.totalQuantity);
       })
   }
   calculateTotalQuantity(): void {

@@ -61,7 +61,7 @@ export class PaymentComponent {
   lastClicked: any = null;
   isFreeShipSelected: any;
   isDiscountSelected: any;
-
+  addRessList:any
   selectedRadioData: any; 
   selectedFreeShipData: any;
   constructor(
@@ -81,6 +81,8 @@ export class PaymentComponent {
       this.addRessChoose = [responese.data.listAddress[0]];
       this.addRess = responese.data.listAddress;
       addChooes = [responese.data.listAddress];
+      this.addRessList = responese.data.listAddress[0].status;
+      console.log(this.addRessList = responese.data.listAddress[0].status)
     });
 
     //get ra thành phố
@@ -89,6 +91,7 @@ export class PaymentComponent {
     this.cartService.getCartItem().subscribe((response: any) => {
       this.cartProductsByPayment = response.data.cartItem;
       lstCart = response.data.cartItem;
+      console.log(lstCart)
       //Tính số lượng * đơn giá
       this.sum = response.data.cartItem.reduce((next: any, prev: any) => {
         return next + prev.price * prev.quantity;
@@ -109,6 +112,7 @@ export class PaymentComponent {
       }
     }, 5000);
   }
+
   onchangeRadio(value: any) {
     this.selectedRadio = value.value;
     if (this.isDiscountSelected && this.selectedFreeShip === value.target.value) {
@@ -129,6 +133,8 @@ export class PaymentComponent {
     }
   }
   
+
+
   handleClick(clickedValue: any) {
     this.selectedRadio = clickedValue
     this.selectedRadioData = this.getListVouncher.find(x => x.id == this.selectedRadio)
@@ -267,6 +273,8 @@ export class PaymentComponent {
           this.freeship = this.selectedFreeShip ? this.getListVouncher.find(x => x.id == this.selectedFreeShip).discount : 0;
           this.discount = this.selectedRadio ? this.getListVouncher.find(x => x.id == this.selectedRadio).discount : 0;
           this.tongtien = this.tongtienhang + this.tienship - this.freeship - this.discount;
+        }else{
+          alert(data.messages[0].messageText)
         }
       });
   }

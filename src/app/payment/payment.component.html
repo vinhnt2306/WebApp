@@ -189,7 +189,7 @@
                             </div>
                         </div>
                         <div class="card-body" style="padding: 10px;">
-                            <div class="row" *ngIf="addRessChoose && addRessChoose.length > 0">
+                            <div class="row" *ngIf="addRessChoose === addRessList && addRessChoose.length > 0">
                                 <div class="col-md-4">
                                     <!-- <h5 class="card-title">Tên + Sdt</h5> -->
                                     <p class="card-text-id">{{addRessChoose[0].id}}</p>
@@ -318,7 +318,7 @@
                                             </div>
                                             <h3>Voucher freeship</h3>
                                             <div *ngFor="let vouncher of getListVouncher">
-                                                <div *ngIf="vouncher && vouncher.type=='freeship'">
+                                                <div *ngIf="vouncher && vouncher.type=='free ship'">
                                                     <div class="WrapperDiscount">
                                                         <div class="WrapperDiscountLeft">
                                                             <div class="circle"></div>

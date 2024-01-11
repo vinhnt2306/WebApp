@@ -69,7 +69,7 @@ createAddress(payload:any) : Observable<any> {
     wardName:payload.wardName,
     wardId:Number(payload.wardId),
     token : JSON.parse(localStorage.getItem('currentUser')??"").data.token,
-    accountId : "65809962-d69a-4d1f-9c14-e4d28da106c4",
+    accountId : JSON.parse(localStorage.getItem('currentUser')??"").data.id,
     status:payload.status
   }
   return this.httpClient.post(`${this.baseURL2}/api/CreateAddress/Process`, body)
@@ -78,7 +78,7 @@ createAddress(payload:any) : Observable<any> {
 getAddress() : Observable<any> {
   const body={
     token : JSON.parse(localStorage.getItem('currentUser')??"").data.token,
-    accountId : "65809962-d69a-4d1f-9c14-e4d28da106c4",
+    accountId : JSON.parse(localStorage.getItem('currentUser')??"").data.id,
   }
   return this.httpClient.post(`${this.baseURL2}/api/GetListAddress/Process`, body)
 }
